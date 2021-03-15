@@ -39,7 +39,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg" style="color: white;">Sign in to start your session</p>
 
     <?php echo validation_errors(); ?>  
 
