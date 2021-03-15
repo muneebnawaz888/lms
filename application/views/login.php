@@ -35,6 +35,7 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="<?php echo base_url('auth'); ?>"><b>Login</b></a>
+    <img src="<?php echo base_url('assets/images/lms_image/logo.png') ?>">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
