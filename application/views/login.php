@@ -34,7 +34,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img class="logo" src="<?php echo base_url('assets/images/lms_image/logo.png') ?>">
+    <img class="logo" src="<?php echo base_url('assets/images/lms_image/logo.png') ?>"><br>
     <a href="<?php echo base_url('auth'); ?>"><b>LMS</b></a>
   </div>
   <!-- /.login-logo -->
