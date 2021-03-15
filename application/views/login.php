@@ -60,7 +60,7 @@
         <div >
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" style="color: white;"> <p style="color: white;">Remember Me</p>
+              <input type="checkbox" style="color: white;"> <spam style="color: white;">Remember Me</spam>
             </label>
           </div>
         </div>
