@@ -52,9 +52,9 @@
         <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <div class="input" class="form-group has-feedback">
+      <div class="form-group has-feedback">
         <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
-        <span class="input" class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
