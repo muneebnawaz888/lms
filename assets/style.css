@@ -1,5 +1,5 @@
 .login-box{
-	width: 450px;
+	width: 430px;
 	height: 550px;
 	background: #5B5B5B;
 	color: #fff;
@@ -8,6 +8,7 @@
 	position: absolute;
 	transform: translate(-50%,-50%);
 	box-sizing: border-box;
+	background: inherit;
 
 }
 .logo{
