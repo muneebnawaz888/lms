@@ -60,7 +60,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" style="color: white;"> Remember Me
+              <input type="checkbox" style="color: white;"> <p style="color: white;">Remember Me</p>
             </label>
           </div>
         </div>
