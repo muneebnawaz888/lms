@@ -39,7 +39,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg" style="color: white;">Sign in to start your session</p>
+    <p class="login-box-msg" style="color: white;">login in to start your session</p>
 
     <?php echo validation_errors(); ?>  
 
@@ -66,7 +66,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="input" class="btn btn-primary btn-block btn-flat">Login In</button>
         </div>
         <!-- /.col -->
       </div>

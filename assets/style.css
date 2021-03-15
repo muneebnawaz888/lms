@@ -9,20 +9,29 @@
 	transform: translate(-50%,-50%);
 	box-sizing: border-box;
 	
-
 }
+
 .login-box-body{
 	background: inherit;
 }
+
 .logo{
 	height: 120px;
 	margin-left: 0px;
 }
+
 .login-logo{
 	margin-bottom: 0px;
 }
+
 .form-control
 {
+	background: inherit;
+    border-radius: 20px;
+    height: 45px;
+}
+
+.input{
 	background: inherit;
     border-radius: 20px;
     height: 45px;
