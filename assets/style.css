@@ -8,4 +8,9 @@
 	position: absolute;
 	transform: translate(-50%,-50%);
 	box-sizing: border-box;
+
+}
+.logo{
+	height: 120px;
+	margin-left: 50%;
 }
