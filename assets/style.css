@@ -21,3 +21,9 @@
 .login-logo{
 	margin-bottom: 0px;
 }
+.input
+{
+	background: inherit;
+    border-radius: 20px;
+    height: 45px;
+}
