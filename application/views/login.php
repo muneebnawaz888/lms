@@ -56,8 +56,8 @@
         <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="row">
-        <div class="col-xs-8">
+      
+        <div >
           <div class="checkbox icheck">
             <label>
               <input type="checkbox" style="color: white;"> <p style="color: white;">Remember Me</p>
@@ -65,11 +65,11 @@
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div >
           <button type="submit" class="input" class="btn btn-primary btn-block btn-flat">Login In</button>
         </div>
         <!-- /.col -->
-      </div>
+     
     </form>
 
   </div>
