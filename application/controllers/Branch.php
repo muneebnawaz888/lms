@@ -12,7 +12,7 @@ class Branch extends Admin_Controller
 		
 
 		$this->load->model('model_branch');
-		$this->load->model('model_category');
+		// $this->load->model('model_category');
 		
 	}
 
