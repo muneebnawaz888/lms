@@ -156,18 +156,18 @@ $("#manageUserNav").addClass('active');
         <div class="form-group">
           <label>Pump Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="pump_name"  id="pump_name_edit" class="form-control input-sm" placeholder="Enter Pump Name">
+            <input type="text" required name="branch_name"  id="branch_name_edit" class="form-control input-sm" placeholder="Enter Pump Name">
           </div>
         </div>
       </div>
-      <div class="form-example-int mg-t-15">
+  <!--     <div class="form-example-int mg-t-15">
         <div class="form-group">
           <label>Address</label>
           <div class="nk-int-st">
             <input type="text" required name="pump_address" id="pump_address_edit" class="form-control input-sm" placeholder="Enter Pump Address">
           </div>
         </div>
-      </div>
+      </div> -->
       <input type="hidden" name="id" id="id" value=""/>
       
     </div>
@@ -246,18 +246,18 @@ pump_data();
 }
 function EditPumpSubmit()
 {
-var pump_name = $('#pump_name_edit').val();;
+var branch_name = $('#branch_name_edit').val();;
 var id= $('#id').val();
-var pump_address= $('#pump_address_edit').val();
+
 
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('pump/edit'); ?>",
-data:{id:id,pump_address:pump_address,pump_name:pump_name},
+url: " <?php echo site_url('branch/edit'); ?>",
+data:{id:id,branch_name:branch_name},
 success: function(data) {
 $('#message_edit').html(data);
 
-pump_data();
+branch_data();
 }
 });
 }
