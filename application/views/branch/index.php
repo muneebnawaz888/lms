@@ -265,8 +265,7 @@ $(document).on("click", ".Edit", function () {
 var pump_name = $(this).data('name');
 var pump_address = $(this).data('address');
 var id = $(this).data('id');
-$(".modal-body #pump_name_edit").val( pump_name );
-$(".modal-body #pump_address_edit").val( pump_address );
+$(".modal-body #branch_name_edit").val( pump_name );
 $(".modal-body #id").val( id );
 });
 
