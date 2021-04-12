@@ -41,7 +41,8 @@ class Auth extends Admin_Controller
 					);
 
 					$this->session->set_userdata($logged_in_sess);
-           			redirect('dashboard', 'refresh');
+           			//redirect('dashboard', 'refresh');
+           			redirect('dashboard/SelectBranch', 'refresh');
            		}
            		else {
            			$this->data['errors'] = 'Incorrect username/password combination';

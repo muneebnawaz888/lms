@@ -9,6 +9,7 @@ class Dashboard extends Admin_Controller {
 		$this->not_logged_in();
 
 		$this->data['page_title'] = 'Home';		
+		$this->load->model('model_branch');
 	}
 	public function index()
 	{
@@ -17,6 +18,17 @@ class Dashboard extends Admin_Controller {
 		
 		$this->data['is_admin'] = $is_admin;
 		$this->render_template('dashboard', $this->data);	
+	}
+	public function SelectBranch()
+	{
+		$branch_data = $this->model_branch->getBranchData();
+	   	$this->data['branch_data']=$branch_data;
+	   	$this->load->view('SelectBranch',$this->data);
+	}
+	public function proceed($branch_id)
+	{
+		$this->session->set_userdata('branch_id', $branch_id);
+		redirect('dashboard', 'refresh');
 	}
 
 }
