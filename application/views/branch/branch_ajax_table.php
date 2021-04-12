@@ -16,7 +16,7 @@
                 <?php if(in_array('updateBranch', $user_permission) || in_array('deleteBranch', $user_permission)): ?>
                         <td>
                           <?php if(in_array('updateBranch', $user_permission)): ?>
-                         <button data-id="<?php echo $pump_value['pump_id'] ?>" data-name="<?php echo $pump_value['pump_name'] ?>" data-address="<?php echo $pump_value['pump_address'] ?>" class="btn btn-default Edit" data-toggle="modal" data-target="#editpump"><i class="fa fa-edit"></i></button>
+                         <button data-id="<?php echo $branch_value['branch_id'] ?>" data-name="<?php echo $branch_value['branch_name'] ?>" class="btn btn-default Edit" data-toggle="modal" data-target="#editpump"><i class="fa fa-edit"></i></button>
         
                           <?php endif; ?>
                          <!-- <?php if(in_array('deleteBranch', $user_permission)): ?>-->
