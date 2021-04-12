@@ -73,6 +73,14 @@
                         <td><input type="checkbox" name="permission[]" id="permission" value="viewGroup" class="minimal"></td>
                         <td><input type="checkbox" name="permission[]" id="permission" value="deleteGroup" class="minimal"></td>
                       </tr>
+                       <tr>
+                        <td>Branch</td>
+                        <td><input type="checkbox" name="permission[]" id="permission" value="createBranch" class="minimal"></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" value="updateBranch" class="minimal"></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" value="viewBranch" class="minimal"></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" value="deleteBranch" class="minimal"></td>
+                      </tr>
+                      
                       
 
                       <tr>

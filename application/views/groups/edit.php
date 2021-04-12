@@ -106,7 +106,29 @@
                         }
                          ?>></td>
                       </tr>
-                      
+                               <tr>
+                        <td>GBranch</td>
+                        <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="createBranch" <?php 
+                        if($serialize_permission) {
+                          if(in_array('createBranch', $serialize_permission)) { echo "checked"; }  
+                        }
+                         ?>></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="updateBranch" <?php 
+                        if($serialize_permission) {
+                          if(in_array('updateBranch', $serialize_permission)) { echo "checked"; }  
+                        }
+                         ?>></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewBranch" <?php 
+                        if($serialize_permission) {
+                          if(in_array('viewBranch', $serialize_permission)) { echo "checked"; }  
+                        }
+                         ?>></td>
+                        <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="deleteBranch" <?php 
+                        if($serialize_permission) {
+                          if(in_array('deleteBranch', $serialize_permission)) { echo "checked"; }  
+                        }
+                         ?>></td>
+                      </tr>
                       <tr>
                         <td>Reports</td>
                         <td> - </td>
