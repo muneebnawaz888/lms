@@ -103,7 +103,25 @@
                 </div>
               </div>
               <!-- /.box-body -->
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                                     <h4>Pumps Controls<h4>
+                            <?php if($branch_data): ?>                  
+                    <?php foreach ($branch_data as $branch_key => $branch_value): ?>
+                    <div class="col-sm-4">
+                    
+            <?php echo $branch_value['branch_name']; ?>
+                <input type="checkbox" name="permission[]" id="permission" value="<?php echo ( preg_replace('/\s+/', '', $branch_value['branch_name']));?>" class="minimal">
+                    </div>
+                            
+                   <?php endforeach ?>
+                <?php endif; ?>
+                     
+                        </div>
 
+                    </div>
+                </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Save Changes</button>
                 <a href="<?php echo base_url('groups/') ?>" class="btn btn-warning">Back</a>
