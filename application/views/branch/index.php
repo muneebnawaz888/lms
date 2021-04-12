@@ -6,11 +6,11 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Users</small>
+        <small>Branch</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users</li>
+        <li class="active">Branch</li>
       </ol>
     </section>
 
@@ -131,7 +131,7 @@ $("#manageUserNav").addClass('active');
       
     </div>
     <div class="modal-footer">
-      <button type="submit" onclick="addPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Add Pumps</button>
+      <button type="submit" onclick="addPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Add Branch</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
     
@@ -143,7 +143,7 @@ $("#manageUserNav").addClass('active');
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Add Pumps</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Add Branch</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -172,7 +172,7 @@ $("#manageUserNav").addClass('active');
       
     </div>
     <div class="modal-footer">
-      <button type="submit" onclick="EditPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Edit Pumps</button>
+      <button type="submit" onclick="EditPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Edit Branch</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
     
