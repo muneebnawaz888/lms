@@ -202,7 +202,7 @@ function addPumpSubmit() {
 var branch_name = $('#branch_name').val();
 // var pump_address = $('#pump_address').val();
 var submit = $('#addPumpSubmit').val();
-if(pump_name!="" && pump_address!=""){
+if(branch_name!=""){
 
 $.ajax({
 url: "<?php echo base_url("branch/create");?>",
