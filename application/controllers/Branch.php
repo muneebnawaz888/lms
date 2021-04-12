@@ -143,7 +143,6 @@ class Branch extends Admin_Controller
 		$id= $this->input->post('id');
 	       $data = array(
         		'branch_name' => $this->input->post('branch_name'),
-        		'branch_address' => $this->input->post('branch_address'),
         		);
     	$update = $this->model_branch->edit($data, $id);
     	if($update == true) {
