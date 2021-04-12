@@ -45,74 +45,67 @@ class Branch extends Admin_Controller
            
         	$data = array(
         		'branch_name' => $this->input->post('branch_name'),
-        		'branch_date' => time(),
-        		'branch_address' => $this->input->post('branch_address'),
         		);
 
-        		$Cash =array(
-					 'account_name' => 'Cash' ,
-					 'account_type' => 'Assets' ,
-					 'branch_id' => ''
-					);
-        		$Sale =array(
-					 'account_name' => 'Sale' ,
-					 'account_type' => 'Revenue' ,
-					 'branch_id' => ''
-					);
+     //    		$Cash =array(
+					//  'account_name' => 'Cash' ,
+					//  'account_type' => 'Assets' ,
+					//  'branch_id' => ''
+					// );
+     //    		$Sale =array(
+					//  'account_name' => 'Sale' ,
+					//  'account_type' => 'Revenue' ,
+					//  'branch_id' => ''
+					// );
 
-        		$Assets =array(
-					 'account_name' => 'Assets' ,
-					 'account_type' => 'Assets' ,
-					 'branch_id' => ''
-					);
-        		$Expenses =array(
-					 'account_name' => 'Expenses' ,
-					 'account_type' => 'Expenses' ,
-					 'branch_id' => ''
-					);
+     //    		$Assets =array(
+					//  'account_name' => 'Assets' ,
+					//  'account_type' => 'Assets' ,
+					//  'branch_id' => ''
+					// );
+     //    		$Expenses =array(
+					//  'account_name' => 'Expenses' ,
+					//  'account_type' => 'Expenses' ,
+					//  'branch_id' => ''
+					// );
 
-        		$Revenue =array(
-					 'account_name' => 'Revenue' ,
-					 'account_type' => 'Revenue' ,
-					 'branch_id' => ''
-					);
-        		$Liability =array(
-					 'account_name' => 'Liability' ,
-					 'account_type' => 'Liability' ,
-					 'branch_id' => ''
-					);
+     //    		$Revenue =array(
+					//  'account_name' => 'Revenue' ,
+					//  'account_type' => 'Revenue' ,
+					//  'branch_id' => ''
+					// );
+     //    		$Liability =array(
+					//  'account_name' => 'Liability' ,
+					//  'account_type' => 'Liability' ,
+					//  'branch_id' => ''
+					// );
 
-        		$Equity =array(
-					 'account_name' => 'Equity' ,
-					 'account_type' => 'Equity' ,
-					 'branch_id' => ''
-					);
-        		$Capital =array(
-					 'account_name' => 'Capital' ,
-					 'account_type' => 'Capital' ,
-					 'branch_id' => ''
-					);
+     //    		$Equity =array(
+					//  'account_name' => 'Equity' ,
+					//  'account_type' => 'Equity' ,
+					//  'branch_id' => ''
+					// );
+     //    		$Capital =array(
+					//  'account_name' => 'Capital' ,
+					//  'account_type' => 'Capital' ,
+					//  'branch_id' => ''
+					// );
 
-        		$acc_array = array(
+        		// $acc_array = array(
         	 
-        			'Assets' 	=> $Assets, 
-        			'Expenses'	=> $Expenses, 
-        			'Revenue' 	=> $Revenue, 
-        			'Liability' => $Liability, 
-        			'Equity'	=> $Equity, 
-        			'Capital' 	=> $Capital, 
-        		);
+        		// 	'Assets' 	=> $Assets, 
+        		// 	'Expenses'	=> $Expenses, 
+        		// 	'Revenue' 	=> $Revenue, 
+        		// 	'Liability' => $Liability, 
+        		// 	'Equity'	=> $Equity, 
+        		// 	'Capital' 	=> $Capital, 
+        		// );
 
 
-        	$create = $this->model_branch->create($data,$acc_array);
+        	// $create = $this->model_branch->create($data,$acc_array);
+        	$create = $this->model_branch->create($data);
 
-        	$data = array(
-        		'category_name' => 'Lubricants',
-        		'category_date' => time(),
-        		'branch_id' => $branch_id,
-        		);
 
-        	$createC=$this->model_category->create($data);
 
         	if($create == true) {
         		$this->session->set_flashdata('success', 'Successfully created');

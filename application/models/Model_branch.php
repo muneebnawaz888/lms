@@ -22,17 +22,17 @@ class Model_branch extends CI_Model
 		
 	}
 
-	public function create($data,$acc_array)
+	public function create($data,$acc_array=null)
 	{
 		if($data) {
 			
 			$create = $this->db->insert('branch', $data);
 			$branch_id=$this->db->insert_id();
-			foreach ($acc_array as $key => $value) {
+			// foreach ($acc_array as $key => $value) {
 
-				$value['branch_id']=$branch_id;
-				$this->db->insert('account_type', $value);
-			}
+			// 	$value['branch_id']=$branch_id;
+			// 	$this->db->insert('account_type', $value);
+			// }
 			return ($create == true) ? true : false;
 		}
 	}
