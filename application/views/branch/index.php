@@ -33,7 +33,7 @@
           <?php endif; ?>
           
        <?php if(in_array('createBranch', $user_permission)): ?>
-        <button  data-toggle="modal" data-target="#addpump" class="btn btn-primary">Add User</button>
+        <button  data-toggle="modal" data-target="#addpump" class="btn btn-primary">Add Branch</button>
         <br /> <br />
         <?php endif; ?>
 
@@ -115,7 +115,7 @@ $("#manageUserNav").addClass('active');
         <div class="form-group">
           <label>Branch Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="branch_name"  id="branch_name" class="form-control input-sm" placeholder="Enter Pump Name">
+            <input type="text" required name="branch_name"  id="branch_name" class="form-control input-sm" placeholder="Enter Branch Name">
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ $("#manageUserNav").addClass('active');
         <div class="form-group">
           <label>Pump Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="branch_name"  id="branch_name_edit" class="form-control input-sm" placeholder="Enter Pump Name">
+            <input type="text" required name="branch_name"  id="branch_name_edit" class="form-control input-sm" placeholder="Enter Branch Name">
           </div>
         </div>
       </div>
