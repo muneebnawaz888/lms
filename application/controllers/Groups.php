@@ -67,7 +67,7 @@ class Groups extends Admin_Controller
         }
         else {
             // false case
-              $branch_data = $this->model_pump->getBranchData();
+              $branch_data = $this->model_branch->getBranchData();
 	   		$this->data['branch_data']=$branch_data;
             $this->render_template('groups/create', $this->data);
         }	
@@ -112,7 +112,7 @@ class Groups extends Admin_Controller
 	            // false case
 	            $group_data = $this->groups->getGroupData($id);
 				$this->data['group_data'] = $group_data;
-				$branch_data = $this->model_pump->getBranchData();
+				$branch_data = $this->model_branch->getBranchData();
 	   			$this->data['branch_data']=$branch_data;
 				$this->render_template('groups/edit', $this->data);	
 	        }	
