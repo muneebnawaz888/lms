@@ -132,13 +132,13 @@ $user_id = $this->session->userdata('id');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Pump</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Branch</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                 <div class="form-example-wrap">
                         <div class="cmp-tb-hd">
-                            <h2>Add Pumps</h2>
+                            <h2>Add Branch</h2>
                             
                       <?php if($this->session->flashdata('success')): ?>
                         <div class="alert alert-success alert-dismissible" role="alert">
@@ -156,9 +156,9 @@ $user_id = $this->session->userdata('id');
               <form action="<?php echo base_url('branch/create') ?>" method="post">
                         <div class="form-example-int">
                             <div class="form-group">
-                                <label>Pump Name</label>
+                                <label>Branch Name</label>
                                 <div class="nk-int-st">
-                                    <input type="text"  name="branch_name" class="form-control input-sm" placeholder="Enter Pump Name">
+                                    <input type="text"  name="branch_name" class="form-control input-sm" placeholder="Enter Branch Name">
                                 </div>
                             </div>
                         </div>
@@ -166,7 +166,7 @@ $user_id = $this->session->userdata('id');
                             <div class="form-group">
                                 <label>Address</label>
                                 <div class="nk-int-st">
-                                    <input type="text"  name="branch_address" class="form-control input-sm" placeholder="Enter Pump Address">
+                                    <input type="text"  name="branch_address" class="form-control input-sm" placeholder="Enter Branch Address">
                                 </div>
                             </div>
                         </div>
