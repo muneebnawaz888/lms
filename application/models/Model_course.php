@@ -69,4 +69,10 @@ class Model_course extends CI_Model
 		$update = $this->db->update('course', $data);
 		return ($update == true) ? true : false;	
 	}
+	public function edit_subject($data, $id)
+	{
+			$this->db->where('subject_id', $id);
+		$update = $this->db->update('subjects', $data);
+		return ($update == true) ? true : false;
+	}
 }

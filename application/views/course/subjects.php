@@ -185,7 +185,7 @@
 </div>
 <script type="text/javascript">
 var $=jQuery;
-function course_data(){
+function subject_data(){
 $.ajax({
 type: "POST",
 url: " <?php echo site_url('course/GetCourseSubjectData'); ?>",
@@ -198,7 +198,7 @@ $('#mytable').DataTable();
 }
 $(document).ready(function() {
 
-course_data();
+subject_data();
 
 });
 
@@ -221,7 +221,7 @@ success: function(data){
 
 $('#message').html(data);
 
-course_data();
+subject_data();
 
 
 }
@@ -245,24 +245,25 @@ data:{id:id},
 success: function(data) {
 $('#main_response').html(data);
 
-pump_data();
+subject_data();
 }
 });
 }
 function EditPumpSubmit()
 {
 var subject_name = $('#subject_name_edit').val();
+var course_id=$('#course_id_edit').val();
 var id= $('#id').val();
 
 
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('course/edit'); ?>",
-data:{id:id,course_name:course_name},
+url: " <?php echo site_url('course/edit_subject'); ?>",
+data:{id:id,course_id:course_id,subject_name:subject_name},
 success: function(data) {
 $('#message_edit').html(data);
 
-course_data();
+subject_data();
 }
 });
 }

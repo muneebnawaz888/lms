@@ -147,7 +147,29 @@ class Course extends Admin_Controller {
     	}
 	}
 	        
-		
+	public function edit_subject()
+	{
+		if(!in_array('updateCourse', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+		$id= $this->input->post('id');
+	       $data = array(
+        		'subject_name' => $this->input->post('subject_name'),
+        		'course_id' => $this->input->post('course_id'),
+        		);
+    	$update = $this->model_course->edit_subject($data, $id);
+    	if($update == true) {
+    		echo( '<div class="alert alert-info alert-dismissible" role="alert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button> Succesfully Updated
+					  </div>' );
+    	}
+    	else {
+    		echo( '<div class="alert alert-danger alert-dismissible alert-mg-b-0" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button> Error Occoured
+                            </div>' );
+    	}
+	}
+	      
 
 	public function delete()
 	{
