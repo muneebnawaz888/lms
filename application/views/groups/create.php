@@ -73,6 +73,14 @@
                       <td><input type="checkbox" name="permission[]" id="permission" value="viewBranch" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteBranch" class="minimal"></td>
                     </tr>
+                     <tr>
+                      <td>Course</td>
+                      <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
+                      <td><input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal"></td>
+                      <td><input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal"></td>
+                      <td><input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal"></td>
+                    </tr>
+                    
                     
                     
                     <tr>
