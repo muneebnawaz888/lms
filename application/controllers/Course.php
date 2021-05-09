@@ -19,9 +19,17 @@ class Course extends Admin_Controller {
 
 		$this->render_template('course/index', $this->data);
 	}
-	public function GetCourseData()
+	public function subjects()
 	{
 		if(!in_array('viewCourse', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+
+		$this->render_template('course/subjects', $this->data);
+	}
+	public function GetCourseData()
+	{
+		if(!in_array('viewCourse', $this->permission) OR !in_array('createCourse', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 		

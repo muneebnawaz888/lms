@@ -69,10 +69,10 @@
               </a>
               <ul class="treeview-menu">
                 <?php if(in_array('createCourse', $user_permission)): ?>
-                  <li id="addCourseNav"><a href="<?php echo base_url('course/') ?>"><i class="fa fa-circle-o"></i> Add Course</a></li>
+                  <li id="addCourseNav"><a href="<?php echo base_url('course/') ?>"><i class="fa fa-circle-o"></i> Manage Course</a></li>
                 <?php endif; ?>
                 <?php if(in_array('updateCourse', $user_permission) || in_array('viewCourse', $user_permission) || in_array('deleteCourse', $user_permission)): ?>
-                <li id="manageCourseNav"><a href="<?php echo base_url('course') ?>"><i class="fa fa-circle-o"></i> Manage Courses</a></li>
+                <li id="manageCourseNav"><a href="<?php echo base_url('course/subjects') ?>"><i class="fa fa-circle-o"></i> Manage Subjects</a></li>
                 <?php endif; ?>
               </ul>
             </li>

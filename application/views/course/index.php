@@ -271,3 +271,11 @@ $(".modal-body #id").val( id );
 
 
 </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#userTable').DataTable();
+
+      $("#mainCourseNav").addClass('active');
+      $("#manageCourseNav").addClass('active');
+    });
+  </script>
