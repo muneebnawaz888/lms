@@ -21,7 +21,7 @@ class Model_course extends CI_Model
 
 		
 	}
-	public function GetCourseSubjectData($id)
+	public function GetCourseSubjectData($id=null)
 	{
 		if($id) {
 			$sql = "SELECT * FROM subjects WHERE subject_id = '$id'";
