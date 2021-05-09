@@ -46,7 +46,7 @@ class Model_course extends CI_Model
 			
 			$create = $this->db->insert('subjects', $data);
 			return ($create == true) ? true : false;
-		]
+		}
 	}
 	public function delete($id)
 	{
