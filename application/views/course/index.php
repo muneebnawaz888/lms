@@ -115,7 +115,7 @@ $("#manageUserNav").addClass('active');
         <div class="form-group">
           <label>Course Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="branch_name"  id="branch_name" class="form-control input-sm" placeholder="Enter Course Name">
+            <input type="text" required name="course_name"  id="course_name" class="form-control input-sm" placeholder="Enter Course Name">
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ $("#manageUserNav").addClass('active');
         <div class="form-group">
           <label>Pump Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="branch_name"  id="branch_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
+            <input type="text" required name="course_name"  id="course_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
           </div>
         </div>
       </div>
@@ -181,10 +181,10 @@ $("#manageUserNav").addClass('active');
 </div>
 <script type="text/javascript">
 var $=jQuery;
-function branch_data(){
+function course_data(){
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('branch/GetCourseData'); ?>",
+url: " <?php echo site_url('course/GetCourseData'); ?>",
 success: function(data) {
 $('#show').html(data);
 $('#mytable').DataTable();
@@ -194,29 +194,29 @@ $('#mytable').DataTable();
 }
 $(document).ready(function() {
 
-branch_data();
+course_data();
 
 });
 
 function addPumpSubmit() {
-var branch_name = $('#branch_name').val();
+var course_name = $('#course_name').val();
 // var pump_address = $('#pump_address').val();
 var submit = $('#addPumpSubmit').val();
-if(branch_name!=""){
+if(course_name!=""){
 
 $.ajax({
-url: "<?php echo base_url("branch/create");?>",
+url: "<?php echo base_url("course/create");?>",
 type: "POST",
 data: {
 submit:submit,
-branch_name: branch_name,
+course_name: course_name,
 },
 cache: false,
 success: function(data){
 
 $('#message').html(data);
 
-branch_data();
+course_data();
 
 
 }
@@ -246,18 +246,18 @@ pump_data();
 }
 function EditPumpSubmit()
 {
-var branch_name = $('#branch_name_edit').val();;
+var course_name = $('#course_name_edit').val();;
 var id= $('#id').val();
 
 
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('branch/edit'); ?>",
-data:{id:id,branch_name:branch_name},
+url: " <?php echo site_url('course/edit'); ?>",
+data:{id:id,course_name:course_name},
 success: function(data) {
 $('#message_edit').html(data);
 
-branch_data();
+course_data();
 }
 });
 }
@@ -265,7 +265,7 @@ $(document).on("click", ".Edit", function () {
 var pump_name = $(this).data('name');
 var pump_address = $(this).data('address');
 var id = $(this).data('id');
-$(".modal-body #branch_name_edit").val( pump_name );
+$(".modal-body #course_name_edit").val( pump_name );
 $(".modal-body #id").val( id );
 });
 
