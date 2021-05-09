@@ -147,7 +147,7 @@
     <div class="modal-body">
       <div class="form-example-int">
         <div class="form-group">
-          <label>Pump Name</label>
+          <label>Course Name</label>
           <div class="nk-int-st">
             <input type="text" required name="course_name"  id="course_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
           </div>

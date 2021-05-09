@@ -33,14 +33,14 @@
           <?php endif; ?>
           
        <?php if(in_array('createCourse', $user_permission)): ?>
-        <button  data-toggle="modal" data-target="#addpump" class="btn btn-primary">Add Course</button>
+        <button  data-toggle="modal" data-target="#addpump" class="btn btn-primary">Add Course Subject</button>
         <br /> <br />
         <?php endif; ?>
 
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Manage Course</h3>
+              <h3 class="box-title">Manage Course Subject</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -95,7 +95,7 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Add Course Subject</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -106,20 +106,25 @@
     <div class="modal-body">
       <div class="form-example-int">
         <div class="form-group">
-          <label>Course Name</label>
+          <label>Subject Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="course_name"  id="course_name" class="form-control input-sm" placeholder="Enter Course Name">
+            <input type="text" required name="subject_name"  id="subject_name" class="form-control input-sm" placeholder="Enter Course Name">
           </div>
         </div>
       </div>
-  <!--     <div class="form-example-int mg-t-15">
+      <div class="form-example-int mg-t-15">
         <div class="form-group">
-          <label>Address</label>
+          <label>Course</label>
           <div class="nk-int-st">
-            <input type="text" required name="pump_address" id="pump_address" class="form-control input-sm" placeholder="Enter Pump Address">
+          <select name="course_id" id="course_id" class="form-control">
+            <option value="">--SELECT--</option>
+            <?php foreach ($course_data as $key => $value) {
+             echo "<option value='".$value['course_id']."'>".$value['course_id']."</option>";
+            } ?>
+          </select>
           </div>
         </div>
-      </div> -->
+      </div>
       
       
     </div>
@@ -147,20 +152,25 @@
     <div class="modal-body">
       <div class="form-example-int">
         <div class="form-group">
-          <label>Pump Name</label>
+          <label>Subject Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="course_name"  id="course_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
+            <input type="text" required name="course_name"  id="subjcet_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
           </div>
         </div>
       </div>
-  <!--     <div class="form-example-int mg-t-15">
+      <div class="form-example-int mg-t-15">
         <div class="form-group">
-          <label>Address</label>
+          <label>Course</label>
           <div class="nk-int-st">
-            <input type="text" required name="pump_address" id="pump_address_edit" class="form-control input-sm" placeholder="Enter Pump Address">
+          <select name="course_id" id="course_id_edit" class="form-control">
+            <option value="">--SELECT--</option>
+            <?php foreach ($course_data as $key => $value) {
+             echo "<option value='".$value['course_id']."'>".$value['course_id']."</option>";
+            } ?>
+          </select>
           </div>
         </div>
-      </div> -->
+      </div>
       <input type="hidden" name="id" id="id" value=""/>
       
     </div>
@@ -177,7 +187,7 @@ var $=jQuery;
 function course_data(){
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('course/GetCourseData'); ?>",
+url: " <?php echo site_url('course/GetCourseSubjectData'); ?>",
 success: function(data) {
 $('#show').html(data);
 $('#mytable').DataTable();
@@ -192,17 +202,18 @@ course_data();
 });
 
 function addPumpSubmit() {
-var course_name = $('#course_name').val();
-// var pump_address = $('#pump_address').val();
+var subject_name = $('#subject_name').val();
+ var course_id = $('#course_id').val();
 var submit = $('#addPumpSubmit').val();
 if(course_name!=""){
 
 $.ajax({
-url: "<?php echo base_url("course/create");?>",
+url: "<?php echo base_url("course/create_subject");?>",
 type: "POST",
 data: {
 submit:submit,
-course_name: course_name,
+subject_name:subject_name,
+course_id: course_id,
 },
 cache: false,
 success: function(data){

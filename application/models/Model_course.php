@@ -21,6 +21,10 @@ class Model_course extends CI_Model
 
 		
 	}
+	public function GetCourseSubjectData()
+	{
+		# code...
+	}
 
 	public function create($data,$acc_array=null)
 	{

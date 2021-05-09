@@ -21,21 +21,32 @@ class Course extends Admin_Controller {
 	}
 	public function subjects()
 	{
-		if(!in_array('viewCourse', $this->permission)) {
+		if(!in_array('viewCourse', $this->permission) OR !in_array('createCourse', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
-
+		$course_data = $this->model_course->getCourseData();
+	   $this->data['course_data']=$course_data;
 		$this->render_template('course/subjects', $this->data);
 	}
 	public function GetCourseData()
 	{
-		if(!in_array('viewCourse', $this->permission) OR !in_array('createCourse', $this->permission)) {
+		if(!in_array('viewCourse', $this->permission) ) {
 			redirect('dashboard', 'refresh');
 		}
 		
 		$course_data = $this->model_course->getCourseData();
 	   $this->data['course_data']=$course_data;
 	   $this->load->view('course/course_ajax_table',$this->data);
+	}
+	public function GetCourseSubjectData()
+	{
+		if(!in_array('viewCourse', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+		
+		$subject_data = $this->model_course->GetCourseSubjectData();
+	   $this->data['subject_data']=$subject_data;
+	   $this->load->view('course/course_subject_ajax_table',$this->data);
 	}
 
 	public function create()
