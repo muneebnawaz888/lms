@@ -141,7 +141,7 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Add Course Subject</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Edit Course Subject</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -154,7 +154,8 @@
         <div class="form-group">
           <label>Subject Name</label>
           <div class="nk-int-st">
-            <input type="text" required name="course_name"  id="subjcet_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
+
+            <input type="text" required name="subject_name_edit"  id="subject_name_edit" class="form-control input-sm" placeholder="Enter Course Name">
           </div>
         </div>
       </div>
@@ -250,7 +251,7 @@ pump_data();
 }
 function EditPumpSubmit()
 {
-var course_name = $('#course_name_edit').val();;
+var subject_name = $('#subject_name_edit').val();
 var id= $('#id').val();
 
 
@@ -267,9 +268,10 @@ course_data();
 }
 $(document).on("click", ".Edit", function () {
 var pump_name = $(this).data('name');
-var pump_address = $(this).data('address');
+var course_id = $(this).data('course_id');
 var id = $(this).data('id');
-$(".modal-body #course_name_edit").val( pump_name );
+$(".modal-body #subject_name_edit").val( pump_name );
+$(".modal-body #course_id_edit").val( course_id );
 $(".modal-body #id").val( id );
 });
 
