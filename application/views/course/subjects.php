@@ -129,7 +129,7 @@
       
     </div>
     <div class="modal-footer">
-      <button type="submit" onclick="addPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Add Course</button>
+      <button type="submit" onclick="addPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Add Course Subject</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
     
@@ -141,7 +141,7 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Add Course Subject</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -175,7 +175,7 @@
       
     </div>
     <div class="modal-footer">
-      <button type="submit" onclick="EditPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Edit Course</button>
+      <button type="submit" onclick="EditPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Edit Course Subject</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
     
@@ -205,7 +205,7 @@ function addPumpSubmit() {
 var subject_name = $('#subject_name').val();
  var course_id = $('#course_id').val();
 var submit = $('#addPumpSubmit').val();
-if(course_name!=""){
+if(course_id!=""){
 
 $.ajax({
 url: "<?php echo base_url("course/create_subject");?>",
