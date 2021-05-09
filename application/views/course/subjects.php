@@ -119,7 +119,7 @@
           <select name="course_id" id="course_id" class="form-control">
             <option value="">--SELECT--</option>
             <?php foreach ($course_data as $key => $value) {
-             echo "<option value='".$value['course_id']."'>".$value['course_id']."</option>";
+             echo "<option value='".$value['course_id']."'>".$value['course_name']."</option>";
             } ?>
           </select>
           </div>
@@ -165,7 +165,7 @@
           <select name="course_id" id="course_id_edit" class="form-control">
             <option value="">--SELECT--</option>
             <?php foreach ($course_data as $key => $value) {
-             echo "<option value='".$value['course_id']."'>".$value['course_id']."</option>";
+             echo "<option value='".$value['course_id']."'>".$value['course_name']."</option>";
             } ?>
           </select>
           </div>
