@@ -24,11 +24,11 @@ class Model_course extends CI_Model
 	public function GetCourseSubjectData($id=null)
 	{
 		if($id) {
-			$sql = "SELECT * FROM subjects WHERE subject_id = '$id'";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND subject_id = '$id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM subjects";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 
