@@ -6,7 +6,7 @@ class Model_course extends CI_Model
 	{
 		parent::__construct();
 	}
-		public function getCourseData($id = null) 
+	public function getCourseData($id = null) 
 	{
 		if($id) {
 			$sql = "SELECT * FROM course WHERE course_id = '$id'";
@@ -21,9 +21,18 @@ class Model_course extends CI_Model
 
 		
 	}
-	public function GetCourseSubjectData()
+	public function GetCourseSubjectData($id)
 	{
-		# code...
+		if($id) {
+			$sql = "SELECT * FROM subjects WHERE subject_id = '$id'";
+			$query = $this->db->query($sql);
+			return $query->result_array();
+		}else{
+			$sql = "SELECT * FROM subjects";
+			$query = $this->db->query($sql);
+			return $query->result_array();
+
+		}
 	}
 
 	public function create($data,$acc_array=null)
