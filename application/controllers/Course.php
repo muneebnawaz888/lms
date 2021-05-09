@@ -91,6 +91,39 @@ class Course extends Admin_Controller {
 
 		
 	}
+	public function create_subject()
+	{
+		if(!in_array('createCourse', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+
+           
+        	$data = array(
+        		'subject_name' => $this->input->post('subject_name'),
+        		'course_id' => $this->input->post('course_id'),
+        		);
+
+        	$create = $this->model_course->create_subject($data);
+
+        	if($create == true) {
+        		$this->session->set_flashdata('success', 'Successfully created');
+        	
+    			echo( '<div class="alert alert-info alert-dismissible" role="alert">
+				      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button> Succesfully Inserted
+				  </div>' );
+
+        		
+        		
+        	}
+        	else {
+        		$this->session->set_flashdata('errors', 'Error occurred!!');
+        	
+			echo( '<div class="alert alert-danger alert-dismissible alert-mg-b-0" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button>  Error Occoured
+                    </div>' );
+        		
+        	}	
+	}
 
 	public function edit()
 	{
