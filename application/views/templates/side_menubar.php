@@ -58,7 +58,25 @@
             </li>
           <?php endif; ?>
 
-
+          <?php if(in_array('createCourse', $user_permission) || in_array('updateCourse', $user_permission) || in_array('viewCourse', $user_permission) || in_array('deleteCourse', $user_permission)): ?>
+            <li class="treeview" id="mainCourseNav">
+              <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>Courses</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <?php if(in_array('createCourse', $user_permission)): ?>
+                  <li id="addCourseNav"><a href="<?php echo base_url('course/create') ?>"><i class="fa fa-circle-o"></i> Add Course</a></li>
+                <?php endif; ?>
+                <?php if(in_array('updateCourse', $user_permission) || in_array('viewCourse', $user_permission) || in_array('deleteCourse', $user_permission)): ?>
+                <li id="manageCourseNav"><a href="<?php echo base_url('course') ?>"><i class="fa fa-circle-o"></i> Manage Courses</a></li>
+                <?php endif; ?>
+              </ul>
+            </li>
+          <?php endif; ?>
             <?php endif; ?>
       <li class="treeview" id="mainGroupNav">
               <a href="#">
