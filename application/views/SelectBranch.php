@@ -26,18 +26,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <img class="logo" src="<?php echo base_url('assets/images/lms_image/logo.png') ?>"><br>
-    <a href="<?php echo base_url('auth'); ?>" style="color: white; "><b>LMS System</b><br><b style="font-size: 20px;">with Automated TimeTable</b></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg" style="color: white;">login in to start your session</p>
-    <div class="notika-status-area">
-        <div class="container">
-            <div class="row">
+
 
 
  <?php if($branch_data): ?>                  
