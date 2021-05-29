@@ -27,7 +27,86 @@
 
 </head>
 <body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <img class="logo" src="<?php echo base_url('assets/images/lms_image/logo.png') ?>"><br>
+    <a href="<?php echo base_url('auth'); ?>" style="color: white; "><b>LMS System</b><br><b style="font-size: 20px;">with Automated TimeTable</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg" style="color: white;">login in to start your session</p>
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
 
+
+ <?php if($branch_data): ?>                  
+                    <?php foreach ($branch_data as $branch_key => $branch_value): ?>
+                        <?php 
+
+                        $user_id = $this->session->userdata('id');
+                        if($user_id==1):
+                            ?>
+                            
+       
+                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
+                    <div class="dash-box">
+                        <div class="website-traffic-ctn align-center" style="padding-top: 30px">
+                            <img src="<?php echo base_url('assets/images/branch.png'); ?>" style="height: 100px !important;width: auto !important;" >
+                            <br>
+                            <h4><?php echo $branch_value['branch_name']; ?></h4>
+                        </div>
+                        <div class="sparkline-bar-stats1"><canvas width="58" height="36" style="display: inline-block; width: 58px; height: 36px; vertical-align: top;"></canvas></div>
+                    </div>
+                </a>
+                </div>
+               
+                            <?php
+                        else:
+                            ?>
+                     
+                         <?php if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)): ?>
+                           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
+                    <div class="dash-box">
+                        <div class="website-traffic-ctn align-center" style="padding-top: 30px">
+                            <img src="<?php echo base_url('assets/images/branch.png'); ?>" style="height: 100px !important;width: auto !important;" >
+                            <br>
+                            <h4><?php echo $branch_value['branch_name']; ?></h4>
+                        </div>
+                        <div class="sparkline-bar-stats1"><canvas width="58" height="36" style="display: inline-block; width: 58px; height: 36px; vertical-align: top;"></canvas></div>
+                    </div>
+                </a>
+                </div>
+                 <?php  endif;
+                        ?>
+                <?php endif; ?>
+      <?php endforeach ?>
+                  <?php endif; ?>
+          
+            </div>
+        </div>
+    </div>
+<?php
+$user_id = $this->session->userdata('id');
+                        if($user_id==1): 
+?>
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-offset-4 col-sm-4" style="text-align: center;">
+        <button class="btn btn-default delete" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i></button>
+    </div>
+ <?php endif; ?>
+          
+            </div>
+        </div>
+    </div>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
