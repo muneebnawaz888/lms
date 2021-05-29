@@ -1,3 +1,17 @@
+<div class="container mt-5">
+    
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card">
+                
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
 <?php if($branch_data): ?>                  
                     <?php foreach ($branch_data as $branch_key => $branch_value): ?>
                         <?php 
