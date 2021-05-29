@@ -43,7 +43,7 @@
                                 ?>
                                 
            
-                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="background-color: #5B5B5B; margin-left: 20px; margin-top: 100px; width: 300px; border-radius: 5px;">
+                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="background-color: #5B5B5B; margin-left: 25px; margin-top: 100px; width: 300px; border-radius: 5px;color: white">
                         <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
                         <div class="dash-box">
                             <div class="website-traffic-ctn align-center" style="padding-top: 30px">
