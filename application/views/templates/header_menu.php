@@ -89,12 +89,13 @@
               <li>
                 <!-- Inner menu: contains the tasks -->
                 <ul class="menu">
+                  <?php foreach ($branch_data as $branch_key => $branch_value){ ?> 
                   <li><!-- Task item -->
-                    <a href="#">
+                    <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
                       <!-- Task title and progress text -->
                       <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
+                        <?php echo $branch_value['branch_name']; ?>
+                        <!-- <small class="pull-right">20%</small> -->
                       </h3>
                       <!-- The progress bar -->
                       <div class="progress xs">
@@ -107,6 +108,7 @@
                     </a>
                   </li>
                   <!-- end task item -->
+                  <?php  } ?>
                 </ul>
               </li>
               <li class="footer">

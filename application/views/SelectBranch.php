@@ -34,7 +34,7 @@
       <div class="col-sm-12">
         
 
-    <?php if($branch_data): ?>                  
+                   <?php if($branch_data): ?>                  
                         <?php foreach ($branch_data as $branch_key => $branch_value): ?>
                             <?php 
 
