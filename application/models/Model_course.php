@@ -8,12 +8,13 @@ class Model_course extends CI_Model
 	}
 	public function getCourseData($id = null) 
 	{
+		$branch_id = $this->session->userdata('branch_id');
 		if($id) {
-			$sql = "SELECT * FROM course WHERE course_id = '$id'";
+			$sql = "SELECT * FROM course WHERE course_id = '$id' AND branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM course";
+			$sql = "SELECT * FROM course AND branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 
@@ -23,12 +24,13 @@ class Model_course extends CI_Model
 	}
 	public function GetCourseSubjectData($id=null)
 	{
+		$branch_id = $this->session->userdata('branch_id');
 		if($id) {
-			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND subject_id = '$id'";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND subject_id = '$id' AND branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 

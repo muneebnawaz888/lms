@@ -54,10 +54,12 @@ class Course extends Admin_Controller {
 		if(!in_array('createCourse', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
-
+			$branch_id = $this->session->userdata('branch_id');
            
         	$data = array(
         		'course_name' => $this->input->post('course_name'),
+        		'branch_id' 	=> $branch_id
+
         		);
 
         	$create = $this->model_course->create($data);
@@ -97,10 +99,11 @@ class Course extends Admin_Controller {
 			redirect('dashboard', 'refresh');
 		}
 
-           
+           $branch_id = $this->session->userdata('branch_id');
         	$data = array(
         		'subject_name' => $this->input->post('subject_name'),
         		'course_id' => $this->input->post('course_id'),
+        		'branch_id'	=> $branch_id
         		);
 
         	$create = $this->model_course->create_subject($data);
