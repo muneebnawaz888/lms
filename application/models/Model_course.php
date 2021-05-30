@@ -14,7 +14,7 @@ class Model_course extends CI_Model
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM course AND branch_id='$branch_id'";
+			$sql = "SELECT * FROM course WHERE branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 
