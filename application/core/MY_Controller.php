@@ -51,7 +51,7 @@ class Admin_Controller extends MY_Controller
 
     public function render_template($page = null, $data = array())
     {
-        $branch_data = $this->model_branch->getBranchData();
+        $data['branch_data'] = $this->model_branch->getBranchData();
         $this->load->view('templates/header',$data);
         $this->load->view('templates/header_menu',$data);
         $this->load->view('templates/side_menubar',$data);
