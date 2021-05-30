@@ -26,11 +26,11 @@ class Model_course extends CI_Model
 	{
 		$branch_id = $this->session->userdata('branch_id');
 		if($id) {
-			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND subject_id = '$id' AND branch_id='$branch_id'";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND subject_id = '$id' AND course.branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND branch_id='$branch_id'";
+			$sql = "SELECT * FROM subjects,course WHERE course.course_id=subjects.course_id AND course.branch_id='$branch_id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 
