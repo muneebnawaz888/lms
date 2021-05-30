@@ -61,8 +61,8 @@
                                 ?>
                          
                              <?php if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)): ?>
-                               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
+                               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="background-color: #5B5B5B; margin-left: 25px; margin-top: 100px; width: 300px; border-radius: 5px; ">
+                        <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>" style="color: white; text-align: center;">
                         <div class="dash-box">
                             <div class="website-traffic-ctn align-center" style="padding-top: 30px">
                                 <img src="<?php echo base_url('assets/images/branch.png'); ?>" style="height: 100px !important;width: auto !important;" >
