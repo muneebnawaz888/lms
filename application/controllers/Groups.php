@@ -84,39 +84,41 @@ class Groups extends Admin_Controller
 		if(!in_array('updateGroup', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
+		echo "<pre>";
+		var_dump($this->input->post('permission'));
+		echo "</pre>";
+		// if($id) {
 
-		if($id) {
+		// 	$this->form_validation->set_rules('group_name', 'Group name', 'required');
 
-			$this->form_validation->set_rules('group_name', 'Group name', 'required');
-
-			if ($this->form_validation->run() == TRUE) {
-	            // true case
-	            $permission = serialize($this->input->post('permission'));
+		// 	if ($this->form_validation->run() == TRUE) {
+	 //            // true case
+	 //            $permission = serialize($this->input->post('permission'));
 	            
-	        	$data = array(
-	        		'group_name' => $this->input->post('group_name'),
-	        		'permission' => $permission
-	        	);
+	 //        	$data = array(
+	 //        		'group_name' => $this->input->post('group_name'),
+	 //        		'permission' => $permission
+	 //        	);
 
-	        	$update = $this->groups->edit($data, $id);
-	        	if($update == true) {
-	        		$this->session->set_flashdata('success', 'Successfully updated');
-	        		redirect('groups/', 'refresh');
-	        	}
-	        	else {
-	        		$this->session->set_flashdata('errors', 'Error occurred!!');
-	        		redirect('groups/edit/'.$id, 'refresh');
-	        	}
-	        }
-	        else {
-	            // false case
-	            $group_data = $this->groups->getGroupData($id);
-				$this->data['group_data'] = $group_data;
-				$branch_data = $this->model_branch->getBranchData();
-	   			$this->data['branch_data']=$branch_data;
-				$this->render_template('groups/edit', $this->data);	
-	        }	
-		}
+	 //        	$update = $this->groups->edit($data, $id);
+	 //        	if($update == true) {
+	 //        		$this->session->set_flashdata('success', 'Successfully updated');
+	 //        		redirect('groups/', 'refresh');
+	 //        	}
+	 //        	else {
+	 //        		$this->session->set_flashdata('errors', 'Error occurred!!');
+	 //        		redirect('groups/edit/'.$id, 'refresh');
+	 //        	}
+	 //        }
+	 //        else {
+	 //            // false case
+	 //            $group_data = $this->groups->getGroupData($id);
+		// 		$this->data['group_data'] = $group_data;
+		// 		$branch_data = $this->model_branch->getBranchData();
+	 //   			$this->data['branch_data']=$branch_data;
+		// 		$this->render_template('groups/edit', $this->data);	
+	 //        }	
+		// }
 	}
 
 	/*
