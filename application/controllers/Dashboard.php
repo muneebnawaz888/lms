@@ -23,6 +23,7 @@ class Dashboard extends Admin_Controller {
 	{
 		$branch_data = $this->model_branch->getBranchData();
 		if (count($branch_data)==1) {
+			echo "string";
 			redirect('proceed/'.$branch_data[0]['branch_id']);
 		}else{
 			$this->data['branch_data']=$branch_data;
