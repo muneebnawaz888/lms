@@ -26,6 +26,7 @@ class Dashboard extends Admin_Controller {
 			echo "string";
 			redirect('proceed/'.$branch_data[0]['branch_id']);
 		}else{
+			echo "s";
 			$this->data['branch_data']=$branch_data;
 	   		$this->load->view('SelectBranch',$this->data);
 		}
