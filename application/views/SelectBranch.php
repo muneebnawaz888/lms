@@ -34,7 +34,7 @@
       <div class="col-sm-12">
         
 
-                   <?php if($branch_data): ?>                  
+                   <?php $check=0; if($branch_data): ?>                  
                         <?php foreach ($branch_data as $branch_key => $branch_value): ?>
                             <?php 
 
@@ -60,7 +60,7 @@
                             else:
                                 ?>
                          
-                             <?php $check=0; if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)): $check=$check+1; ?>
+                             <?php  if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)): $check=$check+1; ?>
                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="background-color: #5B5B5B; margin-left: 25px; margin-top: 100px; width: 300px; border-radius: 5px; ">
                         <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>" style="color: white; text-align: center;">
                         <div class="dash-box">
@@ -78,7 +78,7 @@
                     <?php endif; ?>
           <?php endforeach ?>
                       <?php endif; ?>
-          <?php echo $check; if ($check==1) {
+          <?php if ($check==1) {
           redirect('proceed/'.$branch_data[0]['branch_id']);
           } ?>
  
