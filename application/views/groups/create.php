@@ -11,6 +11,13 @@
       <li class="active">groups</li>
     </ol>
   </section>
+  <?php 
+  $branch_name=array();
+  $branch_id=array();
+  foreach ($branch_data as $branch_key => $branch_value){
+    $branch_name[]=$branch_value['branch_name'];
+    $branch_id[]=$branch_value['branch_id'];
+  } ?>
   <!-- Main content -->
   <section class="content">
     <!-- Small boxes (Stat box) -->
@@ -99,20 +106,15 @@
                     <tr>
                        <th colspan="5">Branch Settings</th>
                     </tr>
+                    <?php 
+                      $chunk = array_chunk($branch_name, 4);
 
-                    <tr>
-                      <th>Avaliable</th>
-                       <?php
-                       $chunk = array_chunk($branch_data, 4);
-                      if($chunk){ 
-                        foreach ($chunk as $branch_key => $branch_value){ 
-              echo '<tr><td>' . implode('</td><td>', $branch_value) . '</td></tr>';
-                          ?> 
+                      foreach ($chunk as $row){
+                        echo '<tr><td>' . implode('</td><td>', $row) . '</td></tr>';
+                      } 
+                        
 
-                            <?php  if($count>4 ){ echo '</tr></tr>'; } ?>
-                     <?php } } ?>
-                     
-                    </tr>
+                     ?>
                     <tr>
                       <th colspan="5">Profile Settings</th>
                     </tr>
