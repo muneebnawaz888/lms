@@ -79,7 +79,7 @@
           <?php endforeach ?>
                       <?php endif; ?>
           <?php if ($check==1) {
-          redirect('proceed/'.$branch_data[0]['branch_id']);
+          redirect('dashboard/proceed/'.$branch_data[0]['branch_id']);
           } ?>
  
       </div>
