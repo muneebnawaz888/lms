@@ -103,13 +103,13 @@
                     <tr>
                       <th>Avaliable</th>
                        <?php
-                     $count=count($branch_data);
-                      if($branch_data){ 
-                        foreach ($branch_data as $branch_key => $branch_value){ ?> 
-                           <td>
-                        <?php echo $branch_value['branch_name']; ?>
-                    <input type="checkbox" name="permission[]" id="permission" value="<?php echo ( preg_replace('/\s+/', '', $branch_value['branch_name']));?>" class="minimal">
-                            </td>
+                       $chunk = array_chunk($branch_data, 4);
+                      if($chunk){ 
+                        foreach ($chunk as $branch_key => $branch_value){ 
+              echo '<tr><td>' . implode('</td><td>', $branch_value) . '</td></tr>';
+                          ?> 
+
+                            <?php  if($count>4 ){ echo '</tr></tr>'; } ?>
                      <?php } } ?>
                      
                     </tr>
