@@ -46,7 +46,7 @@
                     <tr>
                       <th></th>
                       <th>Create</th>
-                      <th>Update</th>
+                      <th>Update (Normal , Partial)</th>
                       <th>View</th>
                       <th>Delete</th>
                     </tr>
@@ -70,21 +70,22 @@
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteGroup" class="minimal"></td>
                     </tr>
                     <tr>
-                      <th colspan="5">System Settings</th>
-                    </tr>
-                    <tr>
                       <td>Branch</td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="createBranch" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="updateBranch" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="viewBranch" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteBranch" class="minimal"></td>
                     </tr>
+                    <tr>
+                      <th colspan="5">System Settings</th>
+                    </tr>
+                  
                      <tr>
                       <td>Course</td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
                       <td>
-                        Normal:<input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
-                        Partial:<input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
+                        <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
+                        <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
                       </td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal"></td>
