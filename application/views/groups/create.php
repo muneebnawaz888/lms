@@ -101,6 +101,7 @@
                     </tr>
 
                     <tr>
+                      <th>Avaliable</th>
                        <?php
                      $count=count($branch_data);
                       if($branch_data){ 
