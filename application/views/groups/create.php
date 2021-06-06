@@ -53,6 +53,9 @@
                   </thead>
                   <tbody>
                     <tr>
+                      <td colspan="5">Basic Settings</td>
+                    </tr>
+                    <tr>
                       <td>Users</td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="createUser" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="updateUser" class="minimal"></td>
@@ -67,6 +70,9 @@
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteGroup" class="minimal"></td>
                     </tr>
                     <tr>
+                      <td colspan="5">System Settings</td>
+                    </tr>
+                    <tr>
                       <td>Branch</td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="createBranch" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="updateBranch" class="minimal"></td>
@@ -76,11 +82,16 @@
                      <tr>
                       <td>Course</td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal"></td>
+                      <td>
+                        <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
+                        <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
+                      </td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal"></td>
                       <td><input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal"></td>
                     </tr>
-                    
+                    <tr>
+                      <td colspan="5">Profile Settings</td>
+                    </tr>
                     
                     
                     <tr>

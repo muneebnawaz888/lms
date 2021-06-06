@@ -137,20 +137,7 @@
                       if(in_array('deleteCourse', $serialize_permission)) { echo "checked"; }
                     } ?>></td>
                   </tr>
-                  <td>Employees</td>
-                  <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="createEmployees" <?php if($serialize_permission) {
-                    if(in_array('createEmployees', $serialize_permission)) { echo "checked"; }
-                  } ?>></td>
-                  <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="updateEmployees" <?php if($serialize_permission) {
-                    if(in_array('updateEmployees', $serialize_permission)) { echo "checked"; }
-                  } ?>></td>
-                  <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewEmployees" <?php if($serialize_permission) {
-                    if(in_array('viewEmployees', $serialize_permission)) { echo "checked"; }
-                  } ?>></td>
-                  <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="deleteEmployees" <?php if($serialize_permission) {
-                    if(in_array('deleteEmployees', $serialize_permission)) { echo "checked"; }
-                  } ?>></td>
-                </tr>
+             
                 <tr>
                   <td>Profile</td>
                   <td> - </td>
