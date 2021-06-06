@@ -78,7 +78,7 @@
                     <?php endif; ?>
           <?php endforeach ?>
                       <?php endif; ?>
-          <?php if ($check==1) {
+          <?php echo $check; if ($check==1) {
           redirect('proceed/'.$branch_data[0]['branch_id']);
           } ?>
  
