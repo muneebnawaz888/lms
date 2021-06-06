@@ -47,8 +47,8 @@
                       <th></th>
                       <th>Create</th>
                       <th>Update (Normal , Partial)</th>
-                      <th>View</th>
-                      <th>Delete</th>
+                      <th>View (All , ID)</th>
+                      <th>Delete (All , ID)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -87,8 +87,14 @@
                         <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
                         <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
                       </td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal"></td>
+                      <td>
+                        <input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal">
+                        <input type="checkbox" name="permission[]" id="permission" value="viewCourseID" class="minimal">
+                      </td>
+                      <td>
+                        <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal">
+                        <input type="checkbox" name="permission[]" id="permission" value="deleteCourseID" class="minimal">
+                      </td>
                     </tr>
                     <tr>
                       <th colspan="5">Profile Settings</th>
