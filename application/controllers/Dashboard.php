@@ -22,6 +22,7 @@ class Dashboard extends Admin_Controller {
 	public function SelectBranch()
 	{
 		$branch_data = $this->model_branch->getBranchData();
+		echo count($branch_data);
 		if (count($branch_data)==1) {
 			echo "string";
 			redirect('proceed/'.$branch_data[0]['branch_id']);
