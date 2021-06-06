@@ -97,6 +97,22 @@
                       </td>
                     </tr>
                     <tr>
+                       <th colspan="5">Branch Settings</th>
+                    </tr>
+
+                    <tr>
+                       <?php
+                     $count=count($branch_data);
+                      if($branch_data){ 
+                        foreach ($branch_data as $branch_key => $branch_value){ ?> 
+                           <td>
+                        <?php echo $branch_value['branch_name']; ?>
+                    <input type="checkbox" name="permission[]" id="permission" value="<?php echo ( preg_replace('/\s+/', '', $branch_value['branch_name']));?>" class="minimal">
+                            </td>
+                     <?php } } ?>
+                     
+                    </tr>
+                    <tr>
                       <th colspan="5">Profile Settings</th>
                     </tr>
                     
@@ -115,6 +131,7 @@
                       <td> - </td>
                       <td> - </td>
                     </tr>
+
                   </tbody>
                 </table>
                 
