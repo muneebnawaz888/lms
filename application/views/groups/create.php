@@ -11,12 +11,12 @@
       <li class="active">groups</li>
     </ol>
   </section>
-  <?php 
+  <?php
   $branch_name=array();
   $branch_id=array();
   foreach ($branch_data as $branch_key => $branch_value){
-    $branch_name[]=$branch_value['branch_name'];
-    $branch_id[]=$branch_value['branch_id'];
+  $branch_name[]=$branch_value['branch_name'];
+  $branch_id[]=$branch_value['branch_id'];
   } ?>
   <!-- Main content -->
   <section class="content">
@@ -42,102 +42,116 @@
           <form role="form" action="<?php base_url('groups/create') ?>" method="post">
             <div class="box-body">
               <?php echo validation_errors(); ?>
-              <div class="form-group">
-                <label for="group_name">Group Name</label>
-                <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name">
-              </div>
-              <div class="form-group">
-                <label for="permission">Permission</label>
-                <table class="table table-responsive">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>Create</th>
-                      <th>Update (Normal , Partial)</th>
-                      <th>View (All , ID)</th>
-                      <th>Delete (All , ID)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th colspan="5">Basic Settings</th>
-                    </tr>
-                    <tr>
-                      <td>Users</td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="createUser" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="updateUser" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="viewUser" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="deleteUser" class="minimal"></td>
-                    </tr>
-                    <tr>
-                      <td>Groups</td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="createGroup" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="updateGroup" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="viewGroup" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="deleteGroup" class="minimal"></td>
-                    </tr>
-                    <tr>
-                      <td>Branch</td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="createBranch" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="updateBranch" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="viewBranch" class="minimal"></td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="deleteBranch" class="minimal"></td>
-                    </tr>
-                    <tr>
-                      <th colspan="5">System Settings</th>
-                    </tr>
-                  
-                     <tr>
-                      <td>Course</td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
-                      <td>
-                        <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
-                        <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
-                      </td>
-                      <td>
-                        <input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal">
-                        <input type="checkbox" name="permission[]" id="permission" value="viewCourseID" class="minimal">
-                      </td>
-                      <td>
-                        <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal">
-                        <input type="checkbox" name="permission[]" id="permission" value="deleteCourseID" class="minimal">
-                      </td>
-                    </tr>
-                    <tr>
-                       <th colspan="5">Branch Settings</th>
-                    </tr>
-                    <?php 
-                      $chunk = array_chunk($branch_name, 4);
-
-                      foreach ($chunk as $row){
-                        echo '<tr><td>' . implode('</td><td>', $row) . '</td></tr>';
-                      } 
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="group_name">Group Name</label>
+                    <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name" value="<?php echo $group_data['group_name']; ?>">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="group_name">Type</label>
+                    <select id="type" class="form-control">
+                      <option value="">--Select--</option>
+                      <option value="-1">All</option>
+                      <option value="0">Teacher</option>
+                      <option value="1">Student</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="permission">Permission</label>
+                    <table class="table table-responsive">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Create</th>
+                          <th>Update (Normal , Partial)</th>
+                          <th>View (All , ID)</th>
+                          <th>Delete (All , ID)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th colspan="5">Basic Settings</th>
+                        </tr>
+                        <tr>
+                          <td>Users</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createUser" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateUser" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewUser" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="deleteUser" class="minimal"></td>
+                        </tr>
+                        <tr>
+                          <td>Groups</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createGroup" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateGroup" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewGroup" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="deleteGroup" class="minimal"></td>
+                        </tr>
+                        <tr>
+                          <td>Branch</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createBranch" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateBranch" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewBranch" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="deleteBranch" class="minimal"></td>
+                        </tr>
+                        <tr>
+                          <th colspan="5">System Settings</th>
+                        </tr>
                         
-
-                     ?>
-                    <tr>
-                      <th colspan="5">Profile Settings</th>
-                    </tr>
+                        <tr>
+                          <td>Course</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
+                            <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
+                          </td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal">
+                            <input type="checkbox" name="permission[]" id="permission" value="viewCourseID" class="minimal">
+                          </td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal">
+                            <input type="checkbox" name="permission[]" id="permission" value="deleteCourseID" class="minimal">
+                          </td>
+                        </tr>
+                        <tr>
+                          <th colspan="5">Branch Settings</th>
+                        </tr>
+                        <?php
+                        $chunk = array_chunk($branch_name, 4);
+                        foreach ($chunk as $row){
+                        echo '<tr><td>' . implode('</td><td>', $row) . '</td></tr>';
+                        }
+                        
+                        ?>
+                        <tr>
+                          <th colspan="5">Profile Settings</th>
+                        </tr>
+                        
+                        
+                        <tr>
+                          <td>Profile</td>
+                          <td> - </td>
+                          <td> - </td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewProfile" class="minimal"></td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Setting</td>
+                          <td>-</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateSetting" class="minimal"></td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                      </tbody>
+                    </table>
                     
-                    
-                    <tr>
-                      <td>Profile</td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="viewProfile" class="minimal"></td>
-                      <td> - </td>
-                    </tr>
-                    <tr>
-                      <td>Setting</td>
-                      <td>-</td>
-                      <td><input type="checkbox" name="permission[]" id="permission" value="updateSetting" class="minimal"></td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-                
+                  </div>
+                </div>
               </div>
             </div>
             <!-- /.box-body -->

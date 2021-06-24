@@ -54,7 +54,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-group">
                     <label for="permission">Permission</label>
                     <?php $serialize_permission = unserialize($group_data['permission']); ?>
