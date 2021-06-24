@@ -123,8 +123,8 @@
                         </tr>
                         <?php
                         $chunk = array_chunk($branch_name, 5);
-                        foreach ($chunk as $row){
-                        echo '<tr><td>' . implode('</td><td>', $row) . ' <input type="checkbox" name="permission[]" id="permission" value="'. preg_replace('/\s+/', '', $row) .' " class="minimal">' . '</td></tr>';
+                        foreach ($chunk as $key => $row){
+                        echo '<tr><td>' . implode('</td><td>', $row) . ' <input type="checkbox" name="permission[]" id="permission" value="'. preg_replace('/\s+/', '', $row[$key]) .' " class="minimal">' . '</td></tr>';
                         }
                         
                         ?>
