@@ -46,7 +46,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="group_name">Group Name</label>
-                    <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name" value="<?php echo $group_data['group_name']; ?>">
+                    <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name" >
                   </div>
                 </div>
                 <div class="col-md-6">
