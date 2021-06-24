@@ -21,7 +21,7 @@ class Course extends Admin_Controller {
 	}
 	public function subjects()
 	{
-		if(!in_array('viewCourse', $this->permission) OR !in_array('createCourse', $this->permission)) {
+		if(!in_array('viewSubject', $this->permission) OR !in_array('createSubject', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 		$course_data = $this->model_course->getCourseData();
@@ -40,7 +40,7 @@ class Course extends Admin_Controller {
 	}
 	public function GetCourseSubjectData()
 	{
-		if(!in_array('viewCourse', $this->permission)) {
+		if(!in_array('viewSubject', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 		
@@ -95,7 +95,7 @@ class Course extends Admin_Controller {
 	}
 	public function create_subject()
 	{
-		if(!in_array('createCourse', $this->permission)) {
+		if(!in_array('createSubject', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 
@@ -152,7 +152,7 @@ class Course extends Admin_Controller {
 	        
 	public function edit_subject()
 	{
-		if(!in_array('updateCourse', $this->permission)) {
+		if(!in_array('updateSubject', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 		$id= $this->input->post('id');

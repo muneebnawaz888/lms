@@ -102,7 +102,34 @@
                   <label for="cpassword">Confirm password</label>
                   <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
                 </div>
+                <?php   if ($user_group['type']==0) { ?>
+                   <div class="form-group">
+                  <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     Fill The Following Information (NOTE! Important for timetable generation)
+                  </div>
+                </div>
+                <?php } ?>
+                 <div class="form-group">
+                  <label for="start_time">Start Time</label>
+                  <input type="time" class="form-control" id="start_time" name="start_time" placeholder="Start Time" value="<?php echo $user_data['start_time'] ?>" autocomplete="off">
+                </div>
 
+                <div class="form-group">
+                  <label for="end_time">End Time</label>
+                  <input type="time" class="form-control" id="end_time" name="end_time" placeholder="End Time" value="<?php echo $user_data['end_time'] ?>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" class="form-control">
+                      <option value="">--Select--</option>
+
+                      <?php foreach($subject_data as $value){ ?>
+                        <option <?php if($user_data['subject']==$value['subject_id']){ echo 'selected'; } ?> value="<?php echo $value['subject_id'] ?>"> <?php echo $value['subject_name'] ?></option>
+
+                    <?php } ?>
+                    </select>
+                  </div>
               </div>
               <!-- /.box-body -->
 

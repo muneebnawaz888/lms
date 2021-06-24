@@ -52,7 +52,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="group_name">Type</label>
-                    <select id="type" class="form-control">
+                    <select id="type" name="subject" class="form-control">
                       <option value="">--Select--</option>
                       <option value="-1">All</option>
                       <option value="0">Teacher</option>
@@ -105,25 +105,31 @@
                         <tr>
                           <td>Course</td>
                           <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
-                          <td>
-                            <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
-                          
-                          </td>
-                          <td>
-                            <input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal">
-                
-                          </td>
-                          <td>
-                            <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal">
-                           
-                          </td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal"> </td>
+                          <td> <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal"> </td>
+                        </tr>
+                        <tr>
+                          <td>Subject</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createSubject" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateSubject" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewSubject" class="minimal"> </td>
+                          <td> <input type="checkbox" name="permission[]" id="permission" value="deleteSubject" class="minimal"> </td>
                         </tr>
                         <tr>
                           <th colspan="5">Branch Settings</th>
                         </tr>
                         <?php
+                        $chunks=array();
                         $chunk = array_chunk($branch_name, 5);
-                        foreach ($chunk as $row){
+                        
+                        foreach ($chunk as $k=> $inner) {
+                         foreach ($inner as $key => $value) {
+                           $chunks[$k][$key]=$value.': <input type="checkbox" name="permission[]" id="permission" value=" '. preg_replace('/\s+/', '', $value) .' " class="minimal">';
+                         }
+                        }
+            
+                        foreach ($chunks as $row){
                         echo '<tr><td>' . implode('</td><td>', $row) . '</td></tr>';
                         }
                         
@@ -155,24 +161,7 @@
               </div>
             </div>
             <!-- /.box-body -->
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4>Branch Controls<h4>
-                  <?php if($branch_data): ?>
-                  <?php foreach ($branch_data as $branch_key => $branch_value): ?>
-                  <div class="col-sm-4">
-                    
-                    <?php echo $branch_value['branch_name']; ?>
-                    <input type="checkbox" name="permission[]" id="permission" value="<?php echo ( preg_replace('/\s+/', '', $branch_value['branch_name']));?>" class="minimal">
-                  </div>
-                  
-                  <?php endforeach ?>
-                  <?php endif; ?>
-                  
-                </div>
-              </div>
-            </div>
+
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Save Changes</button>
               <a href="<?php echo base_url('groups/') ?>" class="btn btn-warning">Back</a>
@@ -193,9 +182,22 @@
 $(document).ready(function() {
 $("#mainGroupNav").addClass('active');
 $("#addGroupNav").addClass('active');
-$('input[type="checkbox"].minimal').iCheck({
-checkboxClass: 'icheckbox_minimal-blue',
-radioClass   : 'iradio_minimal-blue'
+  $('input[type="checkbox"].minimal').iCheck({
+  checkboxClass: 'icheckbox_minimal-blue',
+  radioClass   : 'iradio_minimal-blue'
+  });
 });
-});
+$(document).on('change','#type',function() {
+  var v=$(this).val();
+ 
+  if (v=='-1') { 
+    $('input[type="checkbox"].minimal').each(function(){
+      $(this).iCheck('check');
+    })   
+  }else if(v==''){
+     $('input[type="checkbox"].minimal').each(function(){
+      $(this).iCheck('uncheck');
+    });
+  }
+})
 </script>

@@ -92,7 +92,9 @@ class Groups extends Admin_Controller
 			if ($this->form_validation->run() == TRUE) {
 	            // true case
 	            $permission = serialize($this->input->post('permission'));
-	            
+	            // echo '<pre>';
+	            // var_dump($_POST);
+	            // echo '</pre>';
 	        	$data = array(
 	        		'group_name' => $this->input->post('group_name'),
 	        		'permission' => $permission

@@ -13,6 +13,7 @@ class Users extends Admin_Controller
 
 		$this->load->model('model_users','users');
 		$this->load->model('model_groups','groups');
+			$this->load->model('model_course');
 	}
 
 	
@@ -238,7 +239,7 @@ class Users extends Admin_Controller
 		}
 
 		$id = $this->session->userdata('id');
-
+		$user_group = $this->users->getUserGroup($id);
 		if($id) {
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]');
 			$this->form_validation->set_rules('email', 'Email', 'trim|required');
@@ -256,7 +257,11 @@ class Users extends Admin_Controller
 		        		'phone' => $this->input->post('phone'),
 		        		'gender' => $this->input->post('gender'),
 		        	);
-
+		        	if ($user_group['type']==0) {
+		        		$data['start_time']=$this->input->post('start_time');
+		        		$data['end_time']=$this->input->post('end_time');
+		        		$data['subject']=$this->input->post('subject');
+		        	}
 		        	$update = $this->users->edit($data, $id);
 		        	if($update == true) {
 		        		$this->session->set_flashdata('success', 'Successfully updated');
@@ -284,6 +289,11 @@ class Users extends Admin_Controller
 			        		'phone' => $this->input->post('phone'),
 			        		'gender' => $this->input->post('gender'),
 			        	);
+			        	if ($user_group['type']==0) {
+			        		$data['start_time']=$this->input->post('start_time');
+			        		$data['end_time']=$this->input->post('end_time');
+			        		$data['subject']=$this->input->post('subject');
+			        	}
 
 			        	$update = $this->users->edit($data, $id, $this->input->post('groups'));
 			        	if($update == true) {
@@ -302,6 +312,7 @@ class Users extends Admin_Controller
 
 			        	$this->data['user_data'] = $user_data;
 			        	$this->data['user_group'] = $groups;
+			        	$this->data['subject_data'] = $this->model_course->GetCourseSubjectData();
 
 			            $group_data = $this->groups->getGroupData();
 			        	$this->data['group_data'] = $group_data;
@@ -318,7 +329,7 @@ class Users extends Admin_Controller
 
 	        	$this->data['user_data'] = $user_data;
 	        	$this->data['user_group'] = $groups;
-
+	        	$this->data['subject_data'] = $this->model_course->GetCourseSubjectData();
 	            $group_data = $this->groups->getGroupData();
 	        	$this->data['group_data'] = $group_data;
 
