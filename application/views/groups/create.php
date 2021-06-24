@@ -122,9 +122,9 @@
                           <th colspan="5">Branch Settings</th>
                         </tr>
                         <?php
-                        $chunk = array_chunk($branch_name, 4);
+                        $chunk = array_chunk($branch_name, 5);
                         foreach ($chunk as $row){
-                        echo '<tr><td>' . implode('</td><td><th>Branch</th>', $row) . '</td></tr>';
+                        echo '<tr><td>' . implode('</td><td>', $row) . ' <input type="checkbox" name="permission[]" id="permission" value="'. preg_replace('/\s+/', '', $row) .' " class="minimal">' . '</td></tr>';
                         }
                         
                         ?>
