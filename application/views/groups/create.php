@@ -68,9 +68,9 @@
                         <tr>
                           <th></th>
                           <th>Create</th>
-                          <th>Update (Normal , Partial)</th>
-                          <th>View (All , ID)</th>
-                          <th>Delete (All , ID)</th>
+                          <th>Update</th>
+                          <th>View</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -107,15 +107,15 @@
                           <td><input type="checkbox" name="permission[]" id="permission" value="createCourse" class="minimal"></td>
                           <td>
                             <input type="checkbox" name="permission[]" id="permission" value="updateCourse" class="minimal">
-                            <input type="checkbox" name="permission[]" id="permission" value="updateCoursePar" class="minimal">
+                          
                           </td>
                           <td>
                             <input type="checkbox" name="permission[]" id="permission" value="viewCourse" class="minimal">
-                            <input type="checkbox" name="permission[]" id="permission" value="viewCourseID" class="minimal">
+                
                           </td>
                           <td>
                             <input type="checkbox" name="permission[]" id="permission" value="deleteCourse" class="minimal">
-                            <input type="checkbox" name="permission[]" id="permission" value="deleteCourseID" class="minimal">
+                           
                           </td>
                         </tr>
                         <tr>
@@ -124,7 +124,7 @@
                         <?php
                         $chunk = array_chunk($branch_name, 4);
                         foreach ($chunk as $row){
-                        echo '<tr><td>' . implode('</td><td>', $row) . '</td></tr>';
+                        echo '<tr><td>' . implode('</td><td><th>Branch</th>', $row) . '</td></tr>';
                         }
                         
                         ?>
