@@ -52,6 +52,7 @@ class Groups extends Admin_Controller
             
         	$data = array(
         		'group_name' => $this->input->post('group_name'),
+        		'type' => $this->input->post('type'),
         		'permission' => $permission
         	);
 
@@ -97,6 +98,7 @@ class Groups extends Admin_Controller
 	            // echo '</pre>';
 	        	$data = array(
 	        		'group_name' => $this->input->post('group_name'),
+	        		'type' => $this->input->post('type'),
 	        		'permission' => $permission
 	        	);
 

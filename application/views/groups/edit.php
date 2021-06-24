@@ -53,11 +53,11 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="group_name">Type</label>
-                    <select id="type" name="type " class="form-control">
+                    <select id="type" name="type" class="form-control">
                       <option value="">--Select--</option>
-                      <option value="-1">All</option>
-                      <option value="0">Teacher</option>
-                      <option value="1">Student</option>
+                      <option  <?php if($group_data['type']=='-1'){ echo 'selected'; } ?> value="-1">All</option>
+                      <option <?php if($group_data['type']=='0'){ echo 'selected'; } ?>  value="0">Teacher</option>
+                      <option <?php if($group_data['type']=='1'){ echo 'selected'; } ?>  value="1">Student</option>
                     </select>
                   </div>
                 </div>
@@ -200,6 +200,15 @@
                           </td>
                         </tr>
                          <tr>
+                          <td>Students</td>
+                          <td> - </td>
+                          <td> - </td>
+                          <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewStudents" <?php if($serialize_permission) {
+                            if(in_array('viewStudents', $serialize_permission)) { echo "checked"; }
+                          } ?>></td>
+                          <td> - </td>
+                        </tr>
+                         <tr>
                           <th colspan="5">Branch Settings</th>
                         </tr>
                         <?php
@@ -280,16 +289,26 @@ radioClass   : 'iradio_minimal-blue'
 });
 });
 $(document).on('change','#type',function() {
-var v=$(this).val();
+  var v=$(this).val();
+  var filter=new Array('createUser','updateUser','viewUser','deleteUser','createGroup','updateGroup,viewGroup','deleteGroup','reateBranch','updateBranch','deleteBranch','createCourse','updateCourse','deleteCourse','createSubject','updateSubject','deleteSubject');
 
-if (v=='-1') {
-$('input[type="checkbox"].minimal').each(function(){
-$(this).iCheck('check');
-})
-}else if(v==''){
-$('input[type="checkbox"].minimal').each(function(){
-$(this).iCheck('uncheck');
-});
-}
+  if (v=='-1') { 
+    $('input[type="checkbox"].minimal').each(function(){
+      $(this).iCheck('check');
+    })   
+  }else if(v=='0'){
+    $('input[type="checkbox"].minimal').iCheck('uncheck');
+     $('input[type="checkbox"].minimal').each(function(){
+         console.log(filter);
+         console.log($(this).val());
+       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' ) {
+
+        $(this).iCheck('check');
+      }
+      
+    });
+  }else if(v==''){
+     $('input[type="checkbox"].minimal').iCheck('uncheck');
+  }
 })
 </script>

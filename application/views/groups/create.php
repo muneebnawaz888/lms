@@ -117,6 +117,13 @@
                           <td> <input type="checkbox" name="permission[]" id="permission" value="deleteSubject" class="minimal"> </td>
                         </tr>
                         <tr>
+                          <td>Students</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewStudents" class="minimal"> </td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
                           <th colspan="5">Branch Settings</th>
                         </tr>
                         <?php
@@ -146,6 +153,7 @@
                           <td><input type="checkbox" name="permission[]" id="permission" value="viewProfile" class="minimal"></td>
                           <td> - </td>
                         </tr>
+
                         <tr>
                           <td>Setting</td>
                           <td>-</td>
@@ -173,7 +181,7 @@
       <!-- col-md-12 -->
     </div>
     <!-- /.row -->
-    
+   
   </section>
   <!-- /.content -->
 </div>
@@ -189,15 +197,25 @@ $("#addGroupNav").addClass('active');
 });
 $(document).on('change','#type',function() {
   var v=$(this).val();
- 
+  var filter=new Array('createUser','updateUser','viewUser','deleteUser','createGroup','updateGroup,viewGroup','deleteGroup','reateBranch','updateBranch','deleteBranch','createCourse','updateCourse','deleteCourse','createSubject','updateSubject','deleteSubject');
+
   if (v=='-1') { 
     $('input[type="checkbox"].minimal').each(function(){
       $(this).iCheck('check');
     })   
-  }else if(v==''){
+  }else if(v=='0'){
+    $('input[type="checkbox"].minimal').iCheck('uncheck');
      $('input[type="checkbox"].minimal').each(function(){
-      $(this).iCheck('uncheck');
+         console.log(filter);
+         console.log($(this).val());
+       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' ) {
+
+        $(this).iCheck('check');
+      }
+      
     });
+  }else if(v==''){
+     $('input[type="checkbox"].minimal').iCheck('uncheck');
   }
 })
 </script>

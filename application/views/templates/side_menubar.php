@@ -68,7 +68,7 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <?php if(in_array('createCourse', $user_permission)): ?>
+                <?php if(in_array('viewCourse', $user_permission)): ?>
                   <li id="manageCourseNav"><a href="<?php echo base_url('course/') ?>"><i class="fa fa-circle-o"></i> Manage Course</a></li>
                 <?php endif; ?>
                 <?php if(in_array('updateCourse', $user_permission) || in_array('viewCourse', $user_permission) || in_array('deleteCourse', $user_permission)): ?>
@@ -87,7 +87,7 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-               <?php if(in_array('createBranch', $user_permission) || in_array('updateBranch', $user_permission) || in_array('vieBranch', $user_permission) || in_array('deleteBranch', $user_permission)): ?>
+               <?php if(in_array('createBranch', $user_permission) || in_array('updateBranch', $user_permission) || in_array('viewBranch', $user_permission) || in_array('deleteBranch', $user_permission)): ?>
                 <li><a href="<?php echo base_url('branch/') ?>"><i class="fa fa-user-o"></i> <span>Branch</span></a></li>
                  <?php endif; ?>
                   <li><a href="<?php echo base_url('users/profile/') ?>"><i class="fa fa-user-o"></i> <span>Profile</span></a></li>

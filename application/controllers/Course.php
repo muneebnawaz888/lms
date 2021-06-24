@@ -21,7 +21,7 @@ class Course extends Admin_Controller {
 	}
 	public function subjects()
 	{
-		if(!in_array('viewSubject', $this->permission) OR !in_array('createSubject', $this->permission)) {
+		if(!in_array('viewSubject', $this->permission)) {
 			redirect('dashboard', 'refresh');
 		}
 		$course_data = $this->model_course->getCourseData();
