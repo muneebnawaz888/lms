@@ -64,8 +64,34 @@ $("#manageUserNav").addClass('active');
 });
 </script>
 <?php foreach ($subject_data as $key => $value) {
-  $ids[]=$value['subject_id'];
+$ids[]=$value['subject_id'];
 } ?>
+<!-- Modal -->
+<div class="modal fade"  id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Submit Assingment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="<?php echo base_url('assignment/add_assingemnt') ?>"  enctype="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="del" id="id" value=""/>
+          <div class="form-group">
+            <input type="file" name="file" class="form-control">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  name="submit" class="btn btn-primary">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -115,7 +141,7 @@ $("#manageUserNav").addClass('active');
         </div>
         <div class="form-example-int mg-t-15">
           <div class="form-group">
-            <label>Assingment Duration</label>
+            <label>Assingment Duration (Days)</label>
             <div class="nk-int-st">
               <input type="number" required name="assignment_duration" id="assignment_duration" class="form-control input-sm" placeholder="Enter Assingment Duration">
             </div>
@@ -132,7 +158,7 @@ $("#manageUserNav").addClass('active');
         <div class="form-example-int mg-t-15">
           <div class="form-group">
             <label for="phone">Assingment Subject</label>
-            <select name="course" class="form-control" <?php if(in_array($user_data['subject'],$ids)){ echo 'disabled'; } ?>>
+            <select name="announcment_subject" id="announcment_subject" class="form-control" <?php if(in_array($user_data['subject'],$ids)){ echo 'disabled'; } ?>>
               <option>--Select--</option>
               <?php foreach($subject_data as $value){ ?>
               <option value="<?php echo $value['subject_id']; ?>" <?php if($user_data['subject']==$value['subject_id']){ echo 'selected';  } ?>><?php echo $value['subject_name']; ?></option>
@@ -159,48 +185,6 @@ $("#manageUserNav").addClass('active');
     </div>
   </div>
 </div>
-
-<!-- Edit Modal -->
-<div class="modal fade"  id="editpump" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Assingment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id="message_edit">  </div>
-      
-      
-      <div class="modal-body">
-        <div class="form-example-int">
-          <div class="form-group">
-            <label>Pump Name</label>
-            <div class="nk-int-st">
-              <input type="text" required name="assignment_name"  id="assignment_name_edit" class="form-control input-sm" placeholder="Enter Assingment Name">
-            </div>
-          </div>
-        </div>
-        <!--     <div class="form-example-int mg-t-15">
-          <div class="form-group">
-            <label>Address</label>
-            <div class="nk-int-st">
-              <input type="text" required name="pump_address" id="pump_address_edit" class="form-control input-sm" placeholder="Enter Pump Address">
-            </div>
-          </div>
-        </div> -->
-        <input type="hidden" name="id" id="id" value=""/>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="submit" onclick="EditPumpSubmit()" id="addPumpSubmit" name="submit" class="btn btn-primary">Edit Assingment</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      
-    </div>
-  </div>
-</div>
 <script type="text/javascript">
 var $=jQuery;
 function assignment_data(){
@@ -218,15 +202,20 @@ assignment_data();
 });
 function addPumpSubmit() {
 var assignment_name = $('#assignment_name').val();
-// var pump_address = $('#pump_address').val();
-var submit = $('#addPumpSubmit').val();
+var assignment_duration=$('#assignment_duration').val();
+var assignment_marks=$('#assignment_marks').val();
+var announcment_subject = $('#announcment_subject').val();
+var assignment_des=$('#assignment_des').val();
 if(assignment_name!=""){
 $.ajax({
 url: "<?php echo base_url("assignment/create");?>",
 type: "POST",
 data: {
-submit:submit,
+assignment_duration:assignment_duration,
 assignment_name: assignment_name,
+announcment_subject:announcment_subject,
+assignment_marks: assignment_marks,
+assignment_des: assignment_des,
 },
 cache: false,
 success: function(data){
@@ -244,33 +233,12 @@ function deletePumpSubmit(){
 var id= $('#id').val();
 $.ajax({
 type: "POST",
-url: " <?php echo site_url('pump/delete'); ?>",
+url: " <?php echo site_url('assignment/delete'); ?>",
 data:{id:id},
 success: function(data) {
 $('#main_response').html(data);
-pump_data();
-}
-});
-}
-function EditPumpSubmit()
-{
-var assignment_name = $('#assignment_name_edit').val();;
-var id= $('#id').val();
-$.ajax({
-type: "POST",
-url: " <?php echo site_url('assignment/edit'); ?>",
-data:{id:id,assignment_name:assignment_name},
-success: function(data) {
-$('#message_edit').html(data);
 assignment_data();
 }
 });
 }
-$(document).on("click", ".Edit", function () {
-var pump_name = $(this).data('name');
-var pump_address = $(this).data('address');
-var id = $(this).data('id');
-$(".modal-body #assignment_name_edit").val( pump_name );
-$(".modal-body #id").val( id );
-});
 </script>

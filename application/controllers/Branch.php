@@ -47,62 +47,6 @@ class Branch extends Admin_Controller
         		'branch_name' => $this->input->post('branch_name'),
         		);
 
-     //    		$Cash =array(
-					//  'account_name' => 'Cash' ,
-					//  'account_type' => 'Assets' ,
-					//  'branch_id' => ''
-					// );
-     //    		$Sale =array(
-					//  'account_name' => 'Sale' ,
-					//  'account_type' => 'Revenue' ,
-					//  'branch_id' => ''
-					// );
-
-     //    		$Assets =array(
-					//  'account_name' => 'Assets' ,
-					//  'account_type' => 'Assets' ,
-					//  'branch_id' => ''
-					// );
-     //    		$Expenses =array(
-					//  'account_name' => 'Expenses' ,
-					//  'account_type' => 'Expenses' ,
-					//  'branch_id' => ''
-					// );
-
-     //    		$Revenue =array(
-					//  'account_name' => 'Revenue' ,
-					//  'account_type' => 'Revenue' ,
-					//  'branch_id' => ''
-					// );
-     //    		$Liability =array(
-					//  'account_name' => 'Liability' ,
-					//  'account_type' => 'Liability' ,
-					//  'branch_id' => ''
-					// );
-
-     //    		$Equity =array(
-					//  'account_name' => 'Equity' ,
-					//  'account_type' => 'Equity' ,
-					//  'branch_id' => ''
-					// );
-     //    		$Capital =array(
-					//  'account_name' => 'Capital' ,
-					//  'account_type' => 'Capital' ,
-					//  'branch_id' => ''
-					// );
-
-        		// $acc_array = array(
-        	 
-        		// 	'Assets' 	=> $Assets, 
-        		// 	'Expenses'	=> $Expenses, 
-        		// 	'Revenue' 	=> $Revenue, 
-        		// 	'Liability' => $Liability, 
-        		// 	'Equity'	=> $Equity, 
-        		// 	'Capital' 	=> $Capital, 
-        		// );
-
-
-        	// $create = $this->model_branch->create($data,$acc_array);
         	$create = $this->model_branch->create($data);
 
 

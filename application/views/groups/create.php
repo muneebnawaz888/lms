@@ -215,7 +215,7 @@ $(document).on('change','#type',function() {
      $('input[type="checkbox"].minimal').each(function(){
          console.log(filter);
          console.log($(this).val());
-       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt'  || $(this).val()=='updateAssingemnt' || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' ) {
+       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt' || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' ) {
 
         $(this).iCheck('check');
       }
