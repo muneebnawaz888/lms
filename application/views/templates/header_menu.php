@@ -78,18 +78,21 @@
             </ul>
           </li>
           <!-- Tasks Menu -->
+          <?php $count=0; foreach ($branch_data as $branch_key => $branch_value){ if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)){ $count=$count+1; } } ?>
           <li class="dropdown tasks-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
+              <i class="fa fa-gears"></i>
+              <span class="label label-danger"><?php echo $count; ?></span>
             </a>
+            
             <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
+              <li class="header">You have <?php echo $count; ?> branch</li>
               <li>
                 <!-- Inner menu: contains the tasks -->
                 <ul class="menu">
                   <?php foreach ($branch_data as $branch_key => $branch_value){ ?> 
+                     <?php if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)): ?>
                   <li><!-- Task item -->
                     <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
                       <!-- Task title and progress text -->
@@ -98,22 +101,16 @@
                         <!-- <small class="pull-right">20%</small> -->
                       </h3>
                       <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
+                  
                     </a>
                   </li>
+                     <?php endif; ?>
+
                   <!-- end task item -->
                   <?php  } ?>
                 </ul>
               </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
+              
             </ul>
           </li>
           <!-- User Account Menu -->

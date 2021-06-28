@@ -199,6 +199,30 @@
                             
                           </td>
                         </tr>
+                          <tr>
+                          <td>Assingemnt</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="createAssingemnt" <?php if($serialize_permission) {
+                            if(in_array('createAssingemnt', $serialize_permission)) { echo "checked"; }
+                          } ?>></td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" class="minimal" value="updateAssingemnt" <?php if($serialize_permission) {
+                            if(in_array('updateAssingemnt', $serialize_permission)) { echo "checked"; }
+                            } ?>>
+                            
+                          </td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewAssingemnt" <?php if($serialize_permission) {
+                            if(in_array('viewAssingemnt', $serialize_permission)) { echo "checked"; }
+                            } ?>>
+                            
+                          </td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" class="minimal" value="deleteAssingemnt" <?php if($serialize_permission) {
+                            if(in_array('deleteAssingemnt', $serialize_permission)) { echo "checked"; }
+                            } ?>>
+                            
+                          </td>
+                        </tr>
                          <tr>
                           <td>Students</td>
                           <td> - </td>
@@ -301,7 +325,7 @@ $(document).on('change','#type',function() {
      $('input[type="checkbox"].minimal').each(function(){
          console.log(filter);
          console.log($(this).val());
-       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' ) {
+     if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt'  || $(this).val()=='updateAssingemnt' || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' ) {
 
         $(this).iCheck('check');
       }

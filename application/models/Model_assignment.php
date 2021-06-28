@@ -1,19 +1,19 @@
 <?php 
 
-class Model_branch extends CI_Model
+class Model_assignment extends CI_Model
 {
 	public function __construct()
 	{
 		parent::__construct();
 	}
-	public function getBranchData($id = null) 
+	public function getAssignmentData($id = null) 
 	{
 		if($id) {
-			$sql = "SELECT * FROM branch WHERE branch_id = '$id'";
+			$sql = "SELECT * FROM assignments WHERE assignments_id = '$id'";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}else{
-			$sql = "SELECT * FROM branch";
+			$sql = "SELECT * FROM assignments";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 

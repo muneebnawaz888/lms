@@ -13,7 +13,7 @@ class Users extends Admin_Controller
 
 		$this->load->model('model_users','users');
 		$this->load->model('model_groups','groups');
-			$this->load->model('model_course');
+		$this->load->model('model_course');
 	}
 
 	

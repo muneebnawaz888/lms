@@ -116,6 +116,13 @@
                           <td><input type="checkbox" name="permission[]" id="permission" value="viewSubject" class="minimal"> </td>
                           <td> <input type="checkbox" name="permission[]" id="permission" value="deleteSubject" class="minimal"> </td>
                         </tr>
+                         <tr>
+                          <td>Assingemnt</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="createAssingemnt" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="updateAssingemnt" class="minimal"></td>
+                          <td><input type="checkbox" name="permission[]" id="permission" value="viewAssingemnt" class="minimal"> </td>
+                          <td> <input type="checkbox" name="permission[]" id="permission" value="deleteAssingemnt" class="minimal"> </td>
+                        </tr>
                         <tr>
                           <td>Students</td>
                           <td>-</td>
@@ -208,7 +215,7 @@ $(document).on('change','#type',function() {
      $('input[type="checkbox"].minimal').each(function(){
          console.log(filter);
          console.log($(this).val());
-       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' ) {
+       if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt'  || $(this).val()=='updateAssingemnt' || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' ) {
 
         $(this).iCheck('check');
       }
