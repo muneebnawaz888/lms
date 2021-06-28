@@ -25,7 +25,7 @@ class Course extends Admin_Controller {
 			redirect('dashboard', 'refresh');
 		}
 		$course_data = $this->model_course->getCourseData();
-	   $this->data['course_data']=$course_data;
+	   	$this->data['course_data']=$course_data;
 		$this->render_template('course/subjects', $this->data);
 	}
 	public function GetCourseData()
@@ -102,7 +102,7 @@ class Course extends Admin_Controller {
            $branch_id = $this->session->userdata('branch_id');
         	$data = array(
         		'subject_name' => $this->input->post('subject_name'),
-        		'course_id' => $this->input->post('course_id'),
+        		'course_ids' => json_encode($this->input->post('course_ids')),
         		'branch_id'	=> $branch_id
         		);
 
@@ -158,7 +158,7 @@ class Course extends Admin_Controller {
 		$id= $this->input->post('id');
 	       $data = array(
         		'subject_name' => $this->input->post('subject_name'),
-        		'course_id' => $this->input->post('course_id'),
+        		'course_ids' => json_encode($this->input->post('course_ids')),
         		);
     	$update = $this->model_course->edit_subject($data, $id);
     	if($update == true) {

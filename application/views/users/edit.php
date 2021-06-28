@@ -46,7 +46,7 @@
                   <select class="form-control" id="groups" name="groups">
                     <option value="">Select Groups</option>
                     <?php foreach ($group_data as $k => $v): ?>
-                      <option value="<?php echo $v['id'] ?>" <?php if($user_group['id'] == $v['id']) { echo 'selected'; } ?> ><?php echo $v['group_name'] ?></option> 
+                      <option value="<?php echo $v['id'] ?>" <?php if($user_group['id'] == $v['id']) { echo 'selected'; } ?> data-type="<?php echo $v['type'] ?>"><?php echo $v['group_name'] ?></option> 
                     <?php endforeach ?>
                   </select>
                 </div>
@@ -110,6 +110,9 @@
                   <label for="cpassword">Confirm password</label>
                   <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
                 </div>
+                <div id="append">
+                  <input type="hidden" value="" name="course" >
+                </div>
 
               </div>
               <!-- /.box-body -->
@@ -138,5 +141,33 @@
 
     $("#mainUserNav").addClass('active');
     $("#manageUserNav").addClass('active');
+  var type=$('#groups').find('option:selected').data('type');
+   if (type==1) {
+        $('#append').html($('#all_cources').html());
+      }else{
+         $('#append').html('<input type="hidden" value="" name="course" >');
+      }
+
   });
+
+ $(document).on('change','#groups',function(e) {
+     var type=$(this.options[e.target.selectedIndex]).data('type');
+      if (type==1) {
+        $('#append').html($('#all_cources').html());
+      }else{
+         $('#append').html('<input type="hidden" value="" name="course" >');
+      }
+  });
+
 </script>
+<template id="all_cources">
+  <div class="form-group"> 
+    <label for="phone">Course</label> 
+   <select name="course" class="form-control">
+     <option>--Select--</option>
+     <?php foreach($course_data as $value){ ?>
+      <option value="<?php echo $value['course_id']; ?>" <?php if($user_data['course'] == $value['course_id']) { echo 'selected'; } ?>><?php echo $value['course_name']; ?></option>
+     <?php } ?>
+   </select>
+  </div>
+</template>

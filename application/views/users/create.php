@@ -46,7 +46,7 @@
                   <select class="form-control" id="groups" name="groups">
                     <option value="">Select Groups</option>
                     <?php foreach ($group_data as $k => $v): ?>
-                      <option value="<?php echo $v['id'] ?>"><?php echo $v['group_name'] ?></option>
+                      <option value="<?php echo $v['id'] ?>" data-type="<?php echo $v['type'] ?>"><?php echo $v['group_name'] ?></option>
                     <?php endforeach ?>
                   </select>
                 </div>
@@ -84,6 +84,9 @@
                 <div class="form-group">
                   <label for="phone">Phone</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" autocomplete="off">
+                </div>
+                <div id="append">
+                  <input type="hidden" value="" name="course" >
                 </div>
 
                 <div class="form-group">
@@ -129,4 +132,24 @@
     $("#createUserNav").addClass('active');
   
   });
+  $(document).on('change','#groups',function(e) {
+     var type=$(this.options[e.target.selectedIndex]).data('type');
+      if (type==1) {
+        $('#append').html($('#all_cources').html());
+      }else{
+         $('#append').html('<input type="hidden" value="" name="course" >');
+      }
+  });
+
 </script>
+<template id="all_cources">
+  <div class="form-group"> 
+    <label for="phone">Course</label> 
+   <select name="course" class="form-control">
+     <option>--Select--</option>
+     <?php foreach($course_data as $value){ ?>
+      <option value="<?php echo $value['course_id']; ?>"><?php echo $value['course_name']; ?></option>
+     <?php } ?>
+   </select>
+  </div>
+</template>

@@ -116,7 +116,7 @@
         <div class="form-group">
           <label>Course</label>
           <div class="nk-int-st">
-          <select name="course_id" id="course_id" class="form-control">
+          <select name="course_ids[]" id="course_id" class="form-control select2" multiple=""  style="width: 100%;">
             <option value="">--SELECT--</option>
             <?php foreach ($course_data as $key => $value) {
              echo "<option value='".$value['course_id']."'>".$value['course_name']."</option>";
@@ -163,7 +163,7 @@
         <div class="form-group">
           <label>Course</label>
           <div class="nk-int-st">
-          <select name="course_id" id="course_id_edit" class="form-control">
+          <select name="course_id[]" id="course_id_edit" class="form-control select2" multiple=""  style="width: 100%;">
             <option value="">--SELECT--</option>
             <?php foreach ($course_data as $key => $value) {
              echo "<option value='".$value['course_id']."'>".$value['course_name']."</option>";
@@ -197,7 +197,7 @@ $('#mytable').DataTable();
 });
 }
 $(document).ready(function() {
-
+$('.select2').select2();
 subject_data();
 
 });
@@ -214,7 +214,7 @@ type: "POST",
 data: {
 submit:submit,
 subject_name:subject_name,
-course_id: course_id,
+course_ids: course_id,
 },
 cache: false,
 success: function(data){
@@ -259,7 +259,7 @@ var id= $('#id').val();
 $.ajax({
 type: "POST",
 url: " <?php echo site_url('course/edit_subject'); ?>",
-data:{id:id,course_id:course_id,subject_name:subject_name},
+data:{id:id,course_ids:course_id,subject_name:subject_name},
 success: function(data) {
 $('#message_edit').html(data);
 
@@ -269,10 +269,11 @@ subject_data();
 }
 $(document).on("click", ".Edit", function () {
 var pump_name = $(this).data('name');
-var course_id = $(this).data('course_id');
+var course_ids = $(this).data('course_id');
 var id = $(this).data('id');
 $(".modal-body #subject_name_edit").val( pump_name );
-$(".modal-body #course_id_edit").val( course_id );
+console.log(course_ids);
+$(".modal-body #course_id_edit").val( course_ids ).trigger('change');
 $(".modal-body #id").val( id );
 });
 

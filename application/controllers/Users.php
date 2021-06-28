@@ -64,6 +64,7 @@ class Users extends Admin_Controller
         		'phone' => $this->input->post('phone'),
         		'gender' => $this->input->post('gender'),
         	);
+        	$data['course']=$this->input->post('course');
 
         	$create = $this->users->create($data, $this->input->post('groups'));
         	if($create == true) {
@@ -79,7 +80,9 @@ class Users extends Admin_Controller
             // false case
         	$group_data = $this->groups->getGroupData();
         	$this->data['group_data'] = $group_data;
-
+        	$this->load->model('model_course');
+        	$course_data = $this->model_course->getCourseData();
+	   		$this->data['course_data']=$course_data;
             $this->render_template('users/create', $this->data);
         }	
 
@@ -164,7 +167,9 @@ class Users extends Admin_Controller
 
 			        	$this->data['user_data'] = $user_data;
 			        	$this->data['user_group'] = $groups;
-
+			        	$this->load->model('model_course');
+			        	$course_data = $this->model_course->getCourseData();
+				   		$this->data['course_data']=$course_data;
 			            $group_data = $this->groups->getGroupData();
 			        	$this->data['group_data'] = $group_data;
 
@@ -180,7 +185,9 @@ class Users extends Admin_Controller
 
 	        	$this->data['user_data'] = $user_data;
 	        	$this->data['user_group'] = $groups;
-
+					$this->load->model('model_course');
+			        	$course_data = $this->model_course->getCourseData();
+				   		$this->data['course_data']=$course_data;
 	            $group_data = $this->groups->getGroupData();
 	        	$this->data['group_data'] = $group_data;
 
