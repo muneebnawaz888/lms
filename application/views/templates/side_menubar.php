@@ -81,6 +81,9 @@
              <?php if(in_array('createAssingemnt', $user_permission) || in_array('updateAssingemnt', $user_permission) || in_array('viewAssingemnt', $user_permission) || in_array('deleteAssingemnt', $user_permission)): ?>
                 <li><a href="<?php echo base_url('assignment/') ?>"><i class="fa fa-user-o"></i> <span>Assingemnt</span></a></li>
                  <?php endif; ?>
+                  <?php if(in_array('createAssingemnt', $user_permission) || in_array('updateAssingemnt', $user_permission) || in_array('viewAssingemnt', $user_permission) || in_array('deleteAssingemnt', $user_permission)): ?>
+                <li><a href="<?php echo base_url('TimeTable/') ?>"><i class="fa fa-user-o"></i> <span>Time Table</span></a></li>
+                 <?php endif; ?>
       <li class="treeview" id="mainGroupNav">
               <a href="#">
                 <i class="fa fa-filter"></i>

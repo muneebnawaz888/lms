@@ -40,10 +40,12 @@ class Assignment extends Admin_Controller
 		$user_id = $this->session->userdata('id');
 		$user_group = $this->users->getUserGroup($user_id);
 		$user_data = $this->users->getUserData($user_id);
-		if ($user_group['type']==1) {
-			$assignment_data = $this->assignment->getAssignmentData(null,$user_data['course']);
-		}else{
+		if ($user_group['type']==0) {
 			$assignment_data = $this->assignment->getAssignmentData();
+		}elseif($user_group['type']==-1){
+			$assignment_data = $this->assignment->getAssignmentData(null,'-1');
+		}else{
+			$assignment_data = $this->assignment->getAssignmentDataStudent();
 		}
 		
 	   $this->data['assignment_data']=$assignment_data;

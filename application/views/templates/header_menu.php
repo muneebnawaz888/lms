@@ -53,7 +53,9 @@
             </ul>
           </li>
           <!-- /.messages-menu -->
-
+          <?php 
+          $result=$this->db->query("SELECT * FROM assignments")
+           ?>
           <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">
             <!-- Menu toggle button -->
