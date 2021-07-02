@@ -109,7 +109,7 @@
                      Fill The Following Information (NOTE! Important for timetable generation)
                   </div>
                 </div>
-                <?php } ?>
+                
                  <div class="form-group">
                   <label for="start_time">Start Time</label>
                   <input type="time" class="form-control" id="start_time" name="start_time" placeholder="Start Time" value="<?php echo $user_data['start_time'] ?>" autocomplete="off">
@@ -130,6 +130,7 @@
                     <?php } ?>
                     </select>
                   </div>
+                  <?php } ?>
               </div>
               <!-- /.box-body -->
 

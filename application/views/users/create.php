@@ -136,6 +136,8 @@
      var type=$(this.options[e.target.selectedIndex]).data('type');
       if (type==1) {
         $('#append').html($('#all_cources').html());
+      }else if(type==2){
+        $('#append').html($('#all_students').html());
       }else{
          $('#append').html('<input type="hidden" value="" name="course" >');
       }
@@ -149,6 +151,17 @@
      <option>--Select--</option>
      <?php foreach($course_data as $value){ ?>
       <option value="<?php echo $value['course_id']; ?>"><?php echo $value['course_name']; ?></option>
+     <?php } ?>
+   </select>
+  </div>
+</template>
+<template id="all_students">
+  <div class="form-group"> 
+    <label for="phone">Student</label> 
+   <select name="course" class="form-control">
+     <option>--Select--</option>
+     <?php foreach($student_data as $value){ ?>
+      <option value="<?php echo $value['id']; ?>"><?php echo $value['firstname'] . ' ' . $value['lastname'] ; ?></option>
      <?php } ?>
    </select>
   </div>

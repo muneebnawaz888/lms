@@ -14,7 +14,7 @@
   <!-- Main content -->
   <section class="content">
     <!-- Small boxes (Stat box) -->
-    
+    <?php if(in_array('createTimeTable', $user_permission)): ?>
     <div class="row">
       <div class="col-lg-12 col-xs-12">
         <!-- small box -->
@@ -31,6 +31,7 @@
       </div>
     </div>
     <!-- /.row -->
+     <?php endif; ?>
     <?php 
 // echo '<pre>';
 // var_dump(unserialize($timetable['time_table']));
@@ -38,6 +39,7 @@
     $time_table=unserialize($timetable['time_table']);
      ?>
     <div class="row">
+      <?php if($timetable){ ?>
       <?php foreach ($time_table as $key => $value) { 
         $subjects=$value['subjects']; ?>
         <div class="col-md-12">
@@ -111,7 +113,7 @@
         </div>
       </div>
       <?php } ?>
-     
+      <?php } ?>
     </div>
   </section>
   <!-- /.content -->

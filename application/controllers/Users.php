@@ -38,6 +38,31 @@ class Users extends Admin_Controller
 
 		$this->render_template('users/index', $this->data);
 	}
+	public function students()
+	{
+		if(!in_array('viewStudents', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+
+		$user_data = $this->users->getUserData();
+
+		$result = array();
+		foreach ($user_data as $k => $v) {
+			$group = $this->users->getUserGroup($v['id']);
+			if ($group['type']==1) {
+				
+			
+				$result[$k]['user_info'] = $v;
+
+				
+				$result[$k]['user_group'] = $group;
+			}
+		}
+
+		$this->data['user_data'] = $result;
+
+		$this->render_template('users/students', $this->data);
+	}
 
 	public function create()
 	{
@@ -64,7 +89,13 @@ class Users extends Admin_Controller
         		'phone' => $this->input->post('phone'),
         		'gender' => $this->input->post('gender'),
         	);
-        	$data['course']=$this->input->post('course');
+        	$course=$this->input->post('course');
+        	if ($course=='') {
+        		$data['course']=NULL;
+        	}else{
+        		$data['course']=$this->input->post('course');
+        	}
+        	
 
         	$create = $this->users->create($data, $this->input->post('groups'));
         	if($create == true) {
@@ -83,6 +114,25 @@ class Users extends Admin_Controller
         	$this->load->model('model_course');
         	$course_data = $this->model_course->getCourseData();
 	   		$this->data['course_data']=$course_data;
+
+	   		$user_data = $this->users->getUserData();
+
+				$result = array();
+				foreach ($user_data as $k => $v) {
+					$group = $this->users->getUserGroup($v['id']);
+					if ($group['type']==1) {
+						
+					
+						$result[$k] = $v;
+
+						
+						
+					}
+				}
+
+			$this->data['student_data'] = $result;
+
+
             $this->render_template('users/create', $this->data);
         }	
 
@@ -173,6 +223,24 @@ class Users extends Admin_Controller
 			            $group_data = $this->groups->getGroupData();
 			        	$this->data['group_data'] = $group_data;
 
+
+			        	$user_data = $this->users->getUserData();
+
+							$result = array();
+							foreach ($user_data as $k => $v) {
+								$group = $this->users->getUserGroup($v['id']);
+								if ($group['type']==1) {
+									
+								
+									$result[$k] = $v;
+
+									
+									
+								}
+							}
+
+						$this->data['student_data'] = $result;
+
 						$this->render_template('users/edit', $this->data);	
 			        }	
 
@@ -185,11 +253,29 @@ class Users extends Admin_Controller
 
 	        	$this->data['user_data'] = $user_data;
 	        	$this->data['user_group'] = $groups;
-					$this->load->model('model_course');
-			        	$course_data = $this->model_course->getCourseData();
-				   		$this->data['course_data']=$course_data;
+				$this->load->model('model_course');
+	        	$course_data = $this->model_course->getCourseData();
+		   		$this->data['course_data']=$course_data;
 	            $group_data = $this->groups->getGroupData();
 	        	$this->data['group_data'] = $group_data;
+
+
+	        	$user_data = $this->users->getUserData();
+
+				$result = array();
+				foreach ($user_data as $k => $v) {
+					$group = $this->users->getUserGroup($v['id']);
+					if ($group['type']==1) {
+						
+					
+						$result[$k] = $v;
+
+						
+						
+					}
+				}
+
+				$this->data['student_data'] = $result;
 
 				$this->render_template('users/edit', $this->data);	
 	        }	

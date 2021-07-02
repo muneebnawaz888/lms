@@ -58,6 +58,7 @@
                       <option  <?php if($group_data['type']=='-1'){ echo 'selected'; } ?> value="-1">All</option>
                       <option <?php if($group_data['type']=='0'){ echo 'selected'; } ?>  value="0">Teacher</option>
                       <option <?php if($group_data['type']=='1'){ echo 'selected'; } ?>  value="1">Student</option>
+                      <option <?php if($group_data['type']=='2'){ echo 'selected'; } ?> value="2">Parents</option>
                     </select>
                   </div>
                 </div>
@@ -224,6 +225,20 @@
                           </td>
                         </tr>
                          <tr>
+                          <td>Time Table</td>
+                          <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="createTimeTable" <?php if($serialize_permission) {
+                            if(in_array('createTimeTable', $serialize_permission)) { echo "checked"; }
+                          } ?>></td>
+                          <td>-</td>
+                          <td>
+                            <input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewTimeTable" <?php if($serialize_permission) {
+                            if(in_array('viewTimeTable', $serialize_permission)) { echo "checked"; }
+                            } ?>>
+                            
+                          </td>
+                          <td>-</td>
+                        </tr>
+                         <tr>
                           <td>Students</td>
                           <td> - </td>
                           <td> - </td>
@@ -314,7 +329,7 @@ radioClass   : 'iradio_minimal-blue'
 });
 $(document).on('change','#type',function() {
   var v=$(this).val();
-  var filter=new Array('createUser','updateUser','viewUser','deleteUser','createGroup','updateGroup,viewGroup','deleteGroup','reateBranch','updateBranch','deleteBranch','createCourse','updateCourse','deleteCourse','createSubject','updateSubject','deleteSubject');
+ 
 
   if (v=='-1') { 
     $('input[type="checkbox"].minimal').each(function(){
@@ -323,9 +338,27 @@ $(document).on('change','#type',function() {
   }else if(v=='0'){
     $('input[type="checkbox"].minimal').iCheck('uncheck');
      $('input[type="checkbox"].minimal').each(function(){
-         console.log(filter);
-         console.log($(this).val());
-     if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt'  || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' ) {
+          if ($(this).val()=='viewBranch'  || $(this).val()=='viewCourse'  || $(this).val()=='viewSubject'  || $(this).val()=='viewStudents' || $(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt'  || $(this).val()=='createAssingemnt' || $(this).val()=='deleteAssingemnt' || $(this).val()=='viewTimeTable'  ) {
+
+        $(this).iCheck('check');
+      }
+      
+    });
+  }else if(v=='1'){
+    $('input[type="checkbox"].minimal').iCheck('uncheck');
+     $('input[type="checkbox"].minimal').each(function(){
+    
+       if ($(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt' || $(this).val()=='updateAssingemnt' || $(this).val()=='viewTimeTable' ) {
+
+        $(this).iCheck('check');
+      }
+      
+    });
+  }else if(v=='2'){
+    $('input[type="checkbox"].minimal').iCheck('uncheck');
+     $('input[type="checkbox"].minimal').each(function(){
+   
+       if ($(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt' || $(this).val()=='viewTimeTable' || $(this).val()=='viewStudents' ) {
 
         $(this).iCheck('check');
       }

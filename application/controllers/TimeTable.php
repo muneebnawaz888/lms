@@ -18,12 +18,19 @@ class TimeTable extends Admin_Controller
 	}
 	public function index()
 	{
+		if(!in_array('viewTimeTable', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
 		$this->data['timetable']=$this->TimeTable->getTimeTableData();
 		$this->render_template('timetable/index', $this->data);
 	}
 	public function generate()
 	{
-		$this->db->query("TRUNCATE TABLE `timetable`");
+		if(!in_array('createTimeTable', $this->permission)) {
+			redirect('dashboard', 'refresh');
+		}
+		$branch_id = $this->session->userdata('branch_id');
+		$this->db->query("DELETE FROM `timetable` WHERE branch_id='$branch_id'");
 		//ini_set('memory_limit', '-1');
 		$TimeTable=array();
 		$TimeTable_shuffle=array();
@@ -43,7 +50,8 @@ class TimeTable extends Admin_Controller
 		// //var_dump($TimeTable_shuffle);
 		// var_dump($this->_check_shuffle($TimeTable_shuffle));
 		// echo '</pre>';
-		$TimeTable_final=array('time_table'=>serialize($this->_check_shuffle($TimeTable_shuffle)));
+		
+		$TimeTable_final=array('time_table'=>serialize($this->_check_shuffle($TimeTable_shuffle)),'branch_id'=> $branch_id);
 		$create=$this->db->insert('timetable',$TimeTable_final);
 		if($create == true) {
     		$this->session->set_flashdata('success', 'Successfully created');
