@@ -78,13 +78,13 @@ $ids[]=$value['subject_id'];
       </div>
       <form method="post" action="<?php echo base_url('assignment/add_assingemnt') ?>"  enctype="multipart/form-data">
         <div class="modal-body">
-          <input type="hidden" name="del" id="id" value=""/>
+          <input type="hidden" name="id" id="id" value=""/>
           <div class="form-group">
             <input type="file" name="file" class="form-control">
           </div>
       </div>
       <div class="modal-footer">
-        <button type="submit"  name="submit" class="btn btn-primary">Delete</button>
+        <button type="submit"  name="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -92,6 +92,66 @@ $ids[]=$value['subject_id'];
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade"  id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 99999;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Marks</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="<?php echo base_url('assignment/add_marks') ?>"  enctype="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="id" id="id" value=""/>
+          <input type="hidden" name="user_id" id="user_id" value=""/>
+          <div class="form-group">
+            <input type="text" name="marks" class="form-control">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  name="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+<div class="modal fade"  id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Submitted Assingments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+        <div class="modal-body">
+         <table class="table table-bordered">
+           <thead>
+             <tr>
+               <td>File Name</td>
+               <td>Student Name</td>
+               <td>Marks</td>
+               <td>Action</td>
+             </tr>
+           </thead>
+           <tbody id="inne_append"></tbody>
+         </table>
+        
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+      
+    </div>
+  </div>
+
 <!-- Modal -->
 <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -228,6 +288,30 @@ assignment_data();
 $(document).on("click", ".delete", function () {
 var id = $(this).data('id');
 $(".modal-body #id").val( id );
+});
+$(document).on("click", ".sub", function () {
+  var base_url='<?php echo base_url('assets/uploads/'); ?>';
+  var html='';
+  var sub = JSON.parse(JSON.stringify($(this).data('sub')));
+  $(sub).each(function(i,v) {
+    html+='<tr>';
+
+    html+='<td><a>'+v.file+'</a></td>';
+    html+='<td><a>'+v.firstname+ ' ' +v.lastname +'</a></td>';
+     html+='<td><a>'+v.marks+'</a></td>';
+    html+='<td><a  class="btn btn-default" href="'+base_url+v.file+'" target="_blank">Downlaod</a>  <button data-user='+v.user_id+'  data-id='+v.assignment_id+' class="btn btn-default add_marks" data-toggle="modal" data-target="#exampleModal4"><i class="fa fa-plus"></i></button> </td>'
+
+    html+='</tr>';
+
+  });
+  $('#inne_append').html(html);
+ console.log(sub[0]);
+});
+$(document).on("click", ".add_marks", function () {
+  var id = $(this).data('id');
+  $(".modal-body #id").val( id );
+  $('.modal-body #user_id').val($(this).data('user'));
+
 });
 function deletePumpSubmit(){
 var id= $('#id').val();

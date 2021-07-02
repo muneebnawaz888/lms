@@ -14,6 +14,7 @@ class Users extends Admin_Controller
 		$this->load->model('model_users','users');
 		$this->load->model('model_groups','groups');
 		$this->load->model('model_course');
+		$this->load->model('model_branch','branch');
 	}
 
 	
@@ -60,7 +61,9 @@ class Users extends Admin_Controller
 		}
 
 		$this->data['user_data'] = $result;
-
+		$branch_id = $this->session->userdata('branch_id');
+		
+		$this->data['branch']=$this->branch->getBranchData($branch_id);
 		$this->render_template('users/students', $this->data);
 	}
 

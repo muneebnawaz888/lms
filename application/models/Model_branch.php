@@ -11,7 +11,7 @@ class Model_branch extends CI_Model
 		if($id) {
 			$sql = "SELECT * FROM branch WHERE branch_id = '$id'";
 			$query = $this->db->query($sql);
-			return $query->result_array();
+			return $query->row_array();
 		}else{
 			$sql = "SELECT * FROM branch";
 			$query = $this->db->query($sql);

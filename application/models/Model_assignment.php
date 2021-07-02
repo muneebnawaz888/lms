@@ -49,7 +49,7 @@ class Model_assignment extends CI_Model
 			}
 		}
 		
-		$result = $this->db->query("SELECT * FROM assignments")->result_array();
+		$result = $this->db->query("SELECT * FROM assignments ")->result_array();
 		
 		foreach ($result as $key => $value) {
 			$announcment_subject=$value['announcment_subject'];
@@ -58,6 +58,12 @@ class Model_assignment extends CI_Model
 			}
 		}
 		return $final;
+	}
+	public function getAssignmentSub($value='')
+	{
+		$user_id = $this->session->userdata('id');
+		$result = $this->db->query("SELECT * FROM assignment_sub WHERE user_id='$user_id'")->result_array();
+		return $result;
 	}
 
 	public function create($data)

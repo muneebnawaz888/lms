@@ -97,7 +97,7 @@
           <li><a href="<?php echo base_url('users/profile/') ?>"><i class="fa fa-user-o"></i> <span>Profile</span></a></li>
           
           <li><a href="<?php echo base_url('users/setting/') ?>"><i class="fa fa-wrench"></i> <span>Setting</span></a></li>
-          <li><a href="<?php echo base_url('users/logout/') ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+          <li><a href="<?php echo base_url('auth/logout/') ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
         </ul>
       </li>
       <!--admin Menu items end-->

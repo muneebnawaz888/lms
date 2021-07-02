@@ -57,6 +57,11 @@
                 <tbody>
                   <?php if($user_data): ?>                  
                     <?php foreach ($user_data as $k => $v): ?>
+                      <?php $perm=unserialize($v['user_group']['permission']); ?>
+                    
+                      <?php if (!in_array(preg_replace('/\s+/', '', $branch['branch_name']),$perm)) {
+                        continue;
+                      } ?>
                       <tr>
                         <td><?php echo $v['user_info']['username']; ?></td>
                         <td><?php echo $v['user_info']['email']; ?></td>

@@ -241,7 +241,7 @@ $(document).on('change','#type',function() {
     $('input[type="checkbox"].minimal').iCheck('uncheck');
      $('input[type="checkbox"].minimal').each(function(){
    
-       if ($(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewAssingemnt' || $(this).val()=='viewTimeTable' || $(this).val()=='viewStudents' ) {
+       if ($(this).val()=='viewProfile' || $(this).val()=='updateSetting' || $(this).val()=='viewTimeTable' || $(this).val()=='viewStudents' ) {
 
         $(this).iCheck('check');
       }

@@ -49,6 +49,8 @@ class Assignment extends Admin_Controller
 		}
 		
 	   $this->data['assignment_data']=$assignment_data;
+	   //$this->data['assignment_sub']=$this->assignment->getAssignmentSub();
+	   $this->data['type']=$user_group['type'];
 	   $this->load->view('assignment/assignment_ajax_table',$this->data);
 	}
 	public function create()
@@ -146,7 +148,7 @@ class Assignment extends Admin_Controller
         } else {
             $file = '';
         }
-        $file = array('file' =>  $file,'user_id'=>$user_id,'assignment_id'=>$_POST['id']);
+        $data = array('file' =>  $file,'user_id'=>$user_id,'assignment_id'=>$_POST['id']);
         $create=$this->db->insert('assignment_sub',$data);
         if($create == true) {
         		$this->session->set_flashdata('success', 'Successfully created');
@@ -156,6 +158,39 @@ class Assignment extends Admin_Controller
         		$this->session->set_flashdata('errors', 'Error occurred!!');
         		redirect('assignment/', 'refresh');
         	}
+    }
+    public function status($id)
+    {
+    	$data = array(
+    		'assignment_status' =>1,
+    	);
+    	$this->db->where('assignment_id',$id);
+    	$update = $this->db->update('assignments',$data);
+    	if($update == true) {
+    		$this->session->set_flashdata('success', 'Successfully updated');
+    		redirect('assignment/', 'refresh');
+    	}
+    	else {
+    		$this->session->set_flashdata('errors', 'Error occurred!!');
+    		redirect('assignment/', 'refresh');
+    	}
+    }
+    public function add_marks()
+    {
+    	$data = array(
+    		'marks' =>$_POST['marks'],
+    	);
+    	$this->db->where('assignment_id',$_POST['id']);
+    	$this->db->where('user_id',$_POST['user_id']);
+    	$update = $this->db->update('assignment_sub',$data);
+    	if($update == true) {
+    		$this->session->set_flashdata('success', 'Successfully updated');
+    		redirect('assignment/', 'refresh');
+    	}
+    	else {
+    		$this->session->set_flashdata('errors', 'Error occurred!!');
+    		redirect('assignment/', 'refresh');
+    	}
     }
 
 

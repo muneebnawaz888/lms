@@ -19,68 +19,133 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
+         
           <!-- /.messages-menu -->
           <?php 
-          $result=$this->db->query("SELECT * FROM assignments")
-           ?>
-          <!-- Notifications Menu -->
+        
+          $user_id = $this->session->userdata('id');
+          $sql = "SELECT * FROM user_group WHERE user_id = ?";
+          $query = $this->db->query($sql, array($user_id));
+          $result = $query->row_array();
+          $group_id = $result['group_id'];
+          $g_sql = "SELECT * FROM groups WHERE id = ?";
+          $g_query = $this->db->query($g_sql, array($group_id));
+          $user_group = $g_query->row_array();
+          
+
+
+              $assignment_data=array();
+              $course_subject=array();
+              $user_id = $this->session->userdata('id');
+              $branch_id = $this->session->userdata('branch_id');
+              $user_data=$this->db->query("SELECT * FROM `users`WHERE id='$user_id'")->row_array();
+              $course=$user_data['course'];
+              $subject_data=$this->db->query("SELECT * FROM `subjects`")->result_array();
+              foreach ($subject_data as $key => $value) {
+                if (in_array($course,json_decode($value['course_ids']))) {
+                  $course_subject[]=$value['subject_id'];
+                }
+              }
+              
+              $result = $this->db->query("SELECT * FROM assignments ")->result_array();
+              
+              foreach ($result as $key => $value) {
+                $announcment_subject=$value['announcment_subject'];
+                if (in_array($announcment_subject,$course_subject)) {
+                  $assignment_data[]=$value;
+                }
+              }
+
+
+          
+          
+          if ($user_group['type']==1) { ?>
+            <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">
+             <?php $count_as=0; foreach ($assignment_data as $key => $value) { ?>
+                    <?php 
+                    $assignment_id=$value['assignment_id'];
+                    $assignment_sub = $this->db->query("SELECT * FROM assignment_sub WHERE assignment_id='$assignment_id' AND user_id='$user_id'")->row_array();
+                    if ($assignment_sub['file']!='') {
+                      continue;
+                    }
+                    $count_as=$count_as+1;
+                  }
+                     ?>
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"><?php echo $count_as; ?></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">You have <?php echo $count_as; ?> notifications</li>
               <li>
                 <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                  <?php foreach ($assignment_data as $key => $value) { ?>
+                    <?php 
+                    $assignment_id=$value['assignment_id'];
+                    $assignment_sub = $this->db->query("SELECT * FROM assignment_sub WHERE assignment_id='$assignment_id' AND user_id='$user_id'")->row_array();
+                    if ($assignment_sub['file']!='') {
+                      continue;
+                    }
+                     ?>
+                    <li><!-- start notification -->
+                    <a href="<?php echo base_url('assignment') ?>">
+                      <i class="fa fa-gears text-aqua"></i> <?php echo $value['assignment_des'] ?>
                     </a>
                   </li>
+                  <?php } ?>
+                  
                   <!-- end notification -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <li class="footer"><a href="<?php echo base_url('assignment') ?>">View all</a></li>
             </ul>
           </li>
+          <?php  } ?>
+
+          
           <!-- Tasks Menu -->
-          <?php $count=0; foreach ($branch_data as $branch_key => $branch_value){ if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)){ $count=$count+1; } } ?>
+          <?php $user_id = $this->session->userdata('id');
+                            if($user_id==1){ ?>
+ <?php $count=0; foreach ($branch_data as $branch_key => $branch_value){ $count=$count+1; }  ?>
+          <li class="dropdown tasks-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-gears"></i>
+              <span class="label label-danger"><?php echo $count; ?></span>
+            </a>
+            
+            <ul class="dropdown-menu">
+              <li class="header">You have <?php echo $count; ?> branch</li>
+              <li>
+                <!-- Inner menu: contains the tasks -->
+                <ul class="menu">
+                  <?php foreach ($branch_data as $branch_key => $branch_value){ ?> 
+                     
+                  <li><!-- Task item -->
+                    <a href="<?php echo base_url('dashboard/proceed') ?>/<?php echo $branch_value['branch_id']; ?>">
+                      <!-- Task title and progress text -->
+                      <h3>
+                        <?php echo $branch_value['branch_name']; ?>
+                        <!-- <small class="pull-right">20%</small> -->
+                      </h3>
+                      <!-- The progress bar -->
+                  
+                    </a>
+                  </li>
+                     
+
+                  <!-- end task item -->
+                  <?php  } ?>
+                </ul>
+              </li>
+              
+            </ul>
+          </li>
+                           <?php }else{ ?> 
+ <?php $count=0; foreach ($branch_data as $branch_key => $branch_value){ if(in_array(preg_replace('/\s+/', '', $branch_value['branch_name']), $user_permission)){ $count=$count+1; } } ?>
           <li class="dropdown tasks-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -115,6 +180,8 @@
               
             </ul>
           </li>
+                           <?php } ?>
+         
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
